@@ -5,8 +5,8 @@
     "geeknews": 2
   },
   "feedback": {
-    "last_batch_size": 1,
-    "last_poll_at": "2026-09-07T07:33:01.422620+00:00",
+    "last_batch_size": 0,
+    "last_poll_at": "2026-09-07T08:39:51.705714+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
