@@ -231,6 +231,31 @@ class ProductionDeliveryTests(unittest.TestCase):
                 self.assertEqual(result, 2)
                 sender.assert_not_called()
 
+    def test_twenty_total_ten_geeknews_policy_respects_remaining_quota(self):
+        self.source["max_items_per_day"] = 10
+        self.config["digest"].update({"daily_post_limit": 20, "max_items_per_run": 2})
+        second = Article(
+            "geeknews", "긱뉴스", "게임 NPC 음성 생성 모델 지연시간 벤치마크",
+            "https://news.hada.io/topic?id=98765",
+            description="게임 개발에 쓰는 AI 음성 모델의 추론 지연과 비용을 비교한 실험입니다.",
+            published_at=self.article.published_at,
+        )
+        for total, geeknews, expected in [(2, 2, 2), (9, 9, 1), (10, 10, 0), (19, 9, 1), (20, 9, 0)]:
+            with self.subTest(total=total, geeknews=geeknews):
+                state = load_state(Path(self.temporary.name) / "missing.json")
+                mark_delivered(state, [f"https://example.com/geek/{i}" for i in range(geeknews)], source_id="geeknews")
+                if total > geeknews:
+                    mark_delivered(state, [f"https://example.com/other/{i}" for i in range(total - geeknews)], source_id="other")
+                save_state(self.state_path, state)
+                result, sender, _, _ = self.execute(
+                    "--source", "geeknews", "--no-promo", articles=[self.article, second],
+                )
+                self.assertEqual(result, 0)
+                self.assertEqual(sender.call_count, expected)
+                updated = load_state(self.state_path)
+                self.assertEqual(updated["delivery_count"], total + expected)
+                self.assertEqual(updated["delivery_source_counts"]["geeknews"], geeknews + expected)
+
     def test_conflicting_single_article_flags_are_rejected(self):
         for flag in ("--bootstrap", "--send-promo-now", "--send-channel-guide", "--preview-send", "--show-all"):
             with self.subTest(flag=flag), patch("sys.argv", [

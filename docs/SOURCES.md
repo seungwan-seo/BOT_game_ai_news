@@ -6,7 +6,7 @@
 
 | 소스 | 수집 | 주로 얻는 신호 | 주의점 |
 |---|---|---|---|
-| [GeekNews](https://news.hada.io/) | [공식 RSS](https://news.hada.io/rss/news) 후 전용 필터 | 한국어 게임 AI·코딩 도구 비교·생성 도구·추론 운영 자료 | 하루 최대 2건. 짧은 소개와 긱뉴스 링크만 게시하며 추천 수는 사용하지 않음 |
+| [GeekNews](https://news.hada.io/) | [공식 RSS](https://news.hada.io/rss/news) 후 전용 필터 | 한국어 게임 AI·코딩 도구 비교·생성 도구·추론 운영 자료 | 하루 전체 20건 중 최대 10건. 짧은 소개와 긱뉴스 링크만 게시하며 추천 수는 사용하지 않음 |
 | [AI and Games](https://www.aiandgames.com/) | RSS | 전통적 게임 AI, 생성형 AI, 사례 분석, 주간 논평 | 가장 좋은 중심 소스. 유료 글은 RSS에 보이는 범위만 사용 |
 | [Games and AI](https://www.gamesandai.org/) | RSS | 스튜디오의 AI 도입 단계와 조직 변화 | 글 수가 적어 보조 소스로 사용 |
 | [Game Developer AI/ML/LLM](https://www.gamedeveloper.com/keyword/generative-ai) | 전체 RSS 후 필터 | 제품 발표, 개발사 사례, 법·노동·품질 논쟁 | 일반 게임 뉴스가 많아 관련성 임계값 적용 |

@@ -2,8 +2,8 @@ digest:
   title: "게임 AI 뉴스"
   timezone: "Asia/Seoul"
   daily_post_limit: 20
-  max_items_per_run: 1
-  # 오전 누적 10건을 먼저 채우고, 오후에는 기존처럼 회차당 1건씩 발행한다.
+  max_items_per_run: 2
+  # 오전 누적 10건, 하루 총 20건 목표. 오후는 90분마다 최대 2건씩 발행한다.
   morning_target:
     enabled: true
     count: 10
@@ -71,7 +71,7 @@ sources:
     language: ko
     source_weight: 8
     perspective: community
-    max_items_per_day: 2
+    max_items_per_day: 10
 
   - id: ai_and_games
     name: "AI and Games"
