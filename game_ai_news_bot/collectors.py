@@ -292,7 +292,11 @@ def parse_feed(xml_text: str, source: dict, description_limit: int = 900) -> lis
         if not title or not url:
             continue
         is_geeknews = source.get("editorial_filter") == "geeknews"
-        metadata = {"language": source.get("language", "")}
+        metadata = {
+            "language": source.get("language", ""),
+            "tags": [clean_text(node.text or node.attrib.get("term", ""), 100)
+                     for node in _children_by_name(entry, "category")],
+        }
         if is_geeknews:
             metadata["editorial_filter"] = "geeknews"
             metadata["button_text"] = "📰 긱뉴스에서 읽기"
@@ -341,6 +345,9 @@ class Collector:
 
     def enrich_article(self, article: Article) -> Article:
         """선별된 기사만 열어 대표 이미지와 더 나은 공개 요약 문맥을 보강한다."""
+        if article.metadata.get("enriched") or article.metadata.get("repository"):
+            # 구조화된 릴리스 본문과 이미 조회한 상세 소개를 HTML 메뉴로 덮어쓰지 않는다.
+            return article
         try:
             response = self._get(
                 article.url,
@@ -381,6 +388,12 @@ class Collector:
 
     def collect_source(self, source: dict) -> list[Article]:
         kind = source.get("kind", "rss")
+        if kind == "github_releases":
+            from .github_releases import collect_github_releases
+            return collect_github_releases(self, source)
+        if kind in {"cursor_changelog", "meshy_blog", "convai_blog", "eighty_level"}:
+            from .html_sources import collect_html_source
+            return collect_html_source(self, source)
         if kind == "rss":
             return self._collect_rss(source)
         if kind == "html":

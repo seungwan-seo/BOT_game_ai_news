@@ -107,6 +107,9 @@ def translate_title_to_korean(title: str, timeout: int = 12) -> str:
 
 
 def _summary_source(article: Article) -> str:
+    release_summary = article.metadata.get("release_summary")
+    if isinstance(release_summary, str) and release_summary:
+        return _truncate(release_summary, 360)
     description = re.sub(r"\s+", " ", article.description).strip()
     if not description:
         return ""
@@ -171,6 +174,8 @@ def _summary_source(article: Article) -> str:
 
 
 def fallback_insight(article: Article) -> str:
+    if article.metadata.get("editorial_reason"):
+        return str(article.metadata["editorial_reason"])
     source_text = f"{article.title} {article.description}".casefold()
     for terms, insight in INSIGHT_RULES:
         if any(term in source_text for term in terms):
@@ -252,12 +257,15 @@ def summarize_with_gemini(
             "category": article.category,
             "title": article.title,
             "description": _truncate(article.description, 1600),
+            "perspective": article.perspective,
+            "content_kind": article.metadata.get("content_kind", "news"),
         }
         for index, article in enumerate(articles)
     ]
     prompt = f"""당신은 게임 개발자를 위한 뉴스 편집자다.
 아래 자료만 근거로 한국어 브리핑을 작성하라. 과장하거나 자료에 없는 기능·수치·출시 여부를 만들지 마라.
 회사 블로그는 주장으로 표현하고 사실처럼 확대하지 마라.
+제작 자료는 이전에 공개된 구현 방법·사례이므로 오늘 새로 출시된 것처럼 쓰지 마라.
 
 각 기사에 대해:
 - title_ko: 고유명사를 보존한 자연스러운 한국어 제목

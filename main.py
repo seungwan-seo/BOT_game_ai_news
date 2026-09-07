@@ -4,7 +4,8 @@ import argparse
 import json
 import logging
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
+from collections import Counter
 from pathlib import Path
 
 from game_ai_news_bot.collectors import Collector
@@ -231,7 +232,10 @@ def main() -> int:
         logging.error("모든 소스에서 수집하지 못했습니다: %s", "; ".join(errors))
         return 2
 
-    ranked = rank_articles(articles, config, now)
+    ranked = rank_articles(
+        articles, config, now,
+        fresh_only=not (args.preview_send or args.bootstrap),
+    )
     if feedback_config.get("enabled", False) and feedback_config.get("apply_to_ranking", False):
         report = build_feedback_report(state, feedback_config, now)
         for article in ranked:
@@ -240,25 +244,26 @@ def main() -> int:
             article.metadata["feedback_adjustment"] = adjustment
         # 품질·관련성 필터를 통과한 기사에만 보조 점수를 더한다.
         ranked.sort(key=lambda article: article.score, reverse=True)
-    freshness_days = int(digest_config.get("freshness_days", 4))
-    cutoff = now - timedelta(days=freshness_days)
-    # 미리보기는 게시물 레이아웃 검증이 목적이므로 최신 후보가 요청 수보다
-    # 적을 때도 충분히 볼 수 있게 수집된 관련 기사 전체에서 고른다.
-    fresh = (
-        ranked
-        if args.preview_send
-        else [
-            item
-            for item in ranked
-            if item.published_at is None or item.published_at >= cutoff
-        ]
-    )
+    # 기간 검사는 순위 계산·중복 제거 전에 적용한다. 레이아웃 전용
+    # 미리보기와 기준점 생성은 기존처럼 전체 관련 기사를 사용한다.
+    fresh = ranked
     blocked = set()
     if not (args.show_all or args.preview_send):
         blocked = set(state["seen"]) | set(state.get("pending_delivery_review", {}))
         fresh = [item for item in fresh if not item.identity_urls.intersection(blocked)]
     if args.article_url:
         fresh = [item for item in fresh if item.url == args.article_url]
+
+    collected_counts = Counter(item.source_id for item in articles)
+    ranked_counts = Counter(item.source_id for item in ranked)
+    fresh_counts = Counter(item.source_id for item in fresh)
+    for source in sources:
+        if source.get("enabled", True):
+            logging.info(
+                "출처별 후보 %s: 수집 %d / 선별 %d / 기간 내 미발송 %d",
+                source["id"], collected_counts[source["id"]],
+                ranked_counts[source["id"]], fresh_counts[source["id"]],
+            )
 
     if args.bootstrap:
         if args.dry_run:
@@ -378,7 +383,9 @@ def main() -> int:
                 record_success(exc.receipts)
             if exc.delivery_uncertain:
                 # API 응답이 유실됐으면 자동 재발송하지 않고 운영자 확인을 기다린다.
-                state.setdefault("pending_delivery_review", {})[item.article.url] = now.isoformat()
+                pending = state.setdefault("pending_delivery_review", {})
+                for url in item.article.identity_urls:
+                    pending[url] = now.isoformat()
                 save_state(state_path, state)
             logging.error("%s", exc)
             return 2

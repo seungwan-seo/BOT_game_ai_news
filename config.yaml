@@ -17,7 +17,8 @@ digest:
       - time: "10:00"
         count: 10
   max_items_per_source: 2
-  freshness_days: 4
+  freshness_days: 7
+  resource_freshness_days: 30
   max_description_chars: 2200
 
 http:
@@ -174,6 +175,80 @@ sources:
     min_relevance: 6
     source_weight: 7
     perspective: research
+
+  - id: claude_code
+    name: "Claude Code"
+    kind: github_releases
+    repository: anthropics/claude-code
+    product: "Claude Code"
+    editorial_profile: coding_tool
+    source_weight: 6
+    perspective: vendor
+
+  - id: codex
+    name: "Codex"
+    kind: github_releases
+    repository: openai/codex
+    product: "Codex"
+    editorial_profile: coding_tool
+    source_weight: 6
+    perspective: vendor
+
+  - id: cursor
+    name: "Cursor"
+    kind: cursor_changelog
+    url: "https://cursor.com/changelog"
+    editorial_profile: coding_tool
+    source_weight: 6
+    perspective: vendor
+    max_results: 20
+
+  - id: comfy
+    name: "ComfyUI"
+    kind: rss
+    url: "https://blog.comfy.org/feed"
+    editorial_profile: asset_tool
+    source_weight: 7
+    perspective: vendor
+
+  - id: invokeai
+    name: "InvokeAI"
+    kind: github_releases
+    repository: invoke-ai/InvokeAI
+    product: "InvokeAI"
+    editorial_profile: asset_tool
+    source_weight: 6
+    perspective: vendor
+
+  - id: meshy
+    name: "Meshy"
+    kind: meshy_blog
+    url: "https://www.meshy.ai/blog"
+    editorial_profile: asset_tool
+    source_weight: 6
+    perspective: vendor
+    max_results: 20
+    max_detail_requests: 6
+
+  - id: convai
+    name: "Convai"
+    kind: convai_blog
+    url: "https://convai.com/blog"
+    editorial_profile: npc_tool
+    source_weight: 6
+    perspective: vendor
+    max_results: 20
+    max_detail_requests: 6
+
+  - id: eighty_level
+    name: "80 Level"
+    kind: eighty_level
+    url: "https://80.lv/articles/ai"
+    editorial_profile: game_case
+    source_weight: 9
+    perspective: journalism
+    max_results: 20
+    max_detail_requests: 4
 
 ranking:
   # 제목과 설명에 등장하면 합산한다. 긴 표현을 먼저 계산한다.

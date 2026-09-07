@@ -78,6 +78,20 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(deduplicate([original, korean]), [original])
         self.assertEqual(deduplicate([korean, original]), [korean])
 
+    def test_grouped_release_aliases_prevent_hotfix_republication(self):
+        group = self.article("Tool 1.2 new rendering support", "https://example.com/releases/1.2.0")
+        group.metadata["alias_urls"] = ["https://example.com/releases/1.2.1", "javascript:bad"]
+        patch = self.article("완전히 다른 언어로 쓴 패치 소개", "https://example.com/releases/1.2.1")
+        self.assertEqual(deduplicate([group, patch]), [group])
+        self.assertNotIn("javascript:bad", group.identity_urls)
+
+    def test_distinct_feature_groups_are_not_merged_only_by_version_titles(self):
+        first = self.article("Claude Code v2.1.260 agent worktree support", "https://example.com/260")
+        second = self.article("Claude Code v2.1.261 agent worktree support", "https://example.com/261")
+        first.metadata["release_group_key"] = "github:claude:260"
+        second.metadata["release_group_key"] = "github:claude:261"
+        self.assertEqual(deduplicate([first, second]), [first, second])
+
 
 if __name__ == "__main__":
     unittest.main()

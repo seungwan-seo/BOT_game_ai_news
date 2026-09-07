@@ -127,6 +127,23 @@ class ProductionDeliveryTests(unittest.TestCase):
                 self.assertIn("DRY-RUN", output)
                 self.assertFalse(self.state_path.exists())
 
+    def test_future_duplicate_cannot_suppress_current_news(self):
+        future = Article(
+            "geeknews", "GeekNews", self.article.title,
+            "https://news.hada.io/topic?id=99999",
+            description=self.article.description,
+            published_at=self.article.published_at + timedelta(days=1),
+        )
+        result, sender, _, output = self.execute(
+            "--source", "geeknews", "--dry-run", "--no-promo",
+            articles=[future, self.article],
+        )
+        self.assertEqual(result, 0)
+        sender.assert_not_called()
+        self.assertIn(self.article.url, output)
+        self.assertNotIn(future.url, output)
+        self.assertFalse(self.state_path.exists())
+
     def test_news_receipts_are_registered_for_reaction_analysis(self):
         self.config["feedback"] = {"enabled": True}
         result, sender, _, _ = self.single()
@@ -196,6 +213,7 @@ class ProductionDeliveryTests(unittest.TestCase):
         sender.assert_called_once()
         state = load_state(self.state_path)
         self.assertIn(self.article.url, state["pending_delivery_review"])
+        self.assertIn(self.original_url, state["pending_delivery_review"])
         self.assertEqual(state["delivery_count"], 0)
         result, sender, _, _ = self.execute("--source", "geeknews", "--no-promo")
         self.assertEqual(result, 0)

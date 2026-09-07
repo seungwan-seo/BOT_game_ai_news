@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import html
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from .models import DigestItem
@@ -15,7 +15,7 @@ PERSPECTIVE_LABELS = {
     "independent": "독립 분석",
     "journalism": "전문 보도",
     "research": "연구 원문",
-    "vendor": "공식 발표",
+    "vendor": "공식 발표 · 업체 관점",
     "community": "한국어 큐레이션",
 }
 
@@ -34,10 +34,14 @@ def build_article_post(
         if timezone_name != "Asia/Seoul":
             raise
         local_timezone = timezone(timedelta(hours=9), name="KST")
-    now = datetime.now(local_timezone)
     article = item.article
     perspective = PERSPECTIVE_LABELS.get(article.perspective, "출처")
     article_url = html.escape(article.url, quote=True)
+    content_label = "제작 자료" if article.metadata.get("content_kind") == "resource" else "뉴스"
+    published_label = (
+        f"원문 공개 {article.published_at.astimezone(local_timezone):%Y-%m-%d} {article.published_at.astimezone(local_timezone):%Z}"
+        if article.published_at is not None else "원문 공개일 미확인"
+    )
     original_title = ""
     if (
         item.title_ko.casefold() != article.title.casefold()
@@ -46,7 +50,7 @@ def build_article_post(
         original_title = f"\n<i>EN · {_esc(article.title)}</i>"
     message = (
         f"<b>🎮 {_esc(title)}</b>\n"
-        f"<code>{now:%Y-%m-%d}</code>\n\n"
+        f"<code>{content_label} · {published_label}</code>\n\n"
         f"<b>{_esc(article.category)}</b>\n"
         f'<b><a href="{article_url}">🔗 {_esc(item.title_ko)}</a></b>'
         f"{original_title}\n\n"

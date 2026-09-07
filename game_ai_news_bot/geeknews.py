@@ -84,7 +84,11 @@ def evaluate_article(article: Article) -> bool:
     visual = _matches(text, "이미지", "3d", "텍스처", "에셋", "애니메이션", "image", "texture", "asset", "animation")
     voice = _matches(text, "음성", "tts", "speech", "voice")
     inference = _matches(text, "추론", "inference", "llm", "언어 모델", "언어모델", "모델 api")
-    runtime = _matches(text, "비용", "지연시간", "지연 시간", "latency", "속도", "토큰 가격", "메모리", "온디바이스", "on-device", "양자화", "quantization")
+    runtime = _matches(
+        text, "비용", "지연시간", "지연 시간", "latency", "토큰 가격", "메모리",
+        "온디바이스", "on-device", "양자화", "quantization", "추론 속도", "추론속도",
+        "응답 속도", "응답속도", "inference speed", "tokens per second", "토큰/초",
+    )
 
     if coding and practical:
         category = "🛠 개발 도구"

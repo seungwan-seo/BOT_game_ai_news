@@ -1,6 +1,6 @@
 # 게임 AI 뉴스 소스 평가
 
-2026-09-06 기준. “게임에서 쓰이는 AI”와 “AI를 활용한 게임 제작”을 모두 보되, 단순 생성형 AI 업계 뉴스는 제외한다.
+2026-09-07 기준. “게임에서 쓰이는 AI”와 “AI를 활용한 게임 제작”을 모두 보되, 단순 생성형 AI 업계 뉴스는 제외한다. 활성 소스 20곳에서 뉴스 7일·명확한 제작 자료 30일 기준으로 선별한다.
 
 ## 자동 수집 중
 
@@ -18,6 +18,14 @@
 | [Inworld Blog](https://inworld.ai/blog) | RSS 후 필터 | 실시간 음성·NPC·비용·상용 운영 사례 | 공급업체 사례 연구이므로 낮은 출처 가중치 |
 | [Unreal Engine](https://www.unrealengine.com/news) | 공식 Atom 피드 후 필터 | 엔진 기능, AI 플러그인·개발 워크플로 | 일반 엔진 소식이 많아 높은 임계값 적용 |
 | [arXiv](https://arxiv.org/) | 공식 API 검색 | AI NPC, 게임 에이전트, 절차 생성, 플레이어 모델링 논문 | 동료평가 전 논문도 포함되므로 재현성 확인 필요 |
+| [Claude Code](https://github.com/anthropics/claude-code/releases) | 공식 GitHub Releases API | 코드·리뷰·테스트·작업 자동화 기능 | 정식 릴리스의 주요 변경만. 후속 패치를 묶으며 새 기능은 별도 후보 |
+| [Codex](https://github.com/openai/codex/releases) | 공식 GitHub Releases API | 코드 수정·테스트·에이전트 작업 기능 | 초안·사전 릴리스·내용 없는 수정 공지 제외 |
+| [Cursor](https://cursor.com/changelog) | 공개 changelog HTML | 코딩 작업 환경·에이전트 기능 | 목록의 원래 공개일 사용, 채용·행사·회사 홍보 제외 |
+| [ComfyUI](https://blog.comfy.org/feed) | 공식 RSS | 이미지·3D·텍스처·워크플로 | 챌린지·컨설팅·판매 홍보 제외. GitHub 태그를 정식 릴리스로 세지 않음 |
+| [InvokeAI](https://github.com/invoke-ai/InvokeAI/releases) | 공식 GitHub Releases API | 모델 지원·이미지 수정·반복 제작 기능 | 기능 발표·중요 제작 환경 수정만, 단순 패치 묶음 |
+| [Meshy](https://www.meshy.ai/blog) | 공개 목록 + 제한된 상세 메타데이터 | 형상·메시·리깅·엔진 연동 | 상대시간을 최초 공개일로 오인하지 않고 상세 datePublished 확인 |
+| [Convai](https://convai.com/blog) | 공개 목록 + 제한된 상세 메타데이터 | Unity·Unreal NPC 행동·기억·게임 상태 연동 | 명확한 개발 기능·튜토리얼만, 산업용 영업·교육 홍보 제외 |
+| [80 Level AI](https://80.lv/articles/ai) | AI 전용 공개 HTML 목록 | 제작자 인터뷰·게임 적용·에셋 작업 사례 | Sponsored Article 제외. 업체 인터뷰의 수치는 독립 측정으로 표현하지 않음 |
 
 긱뉴스는 [이용약관](https://news.hada.io/terms)과 [robots 정책](https://news.hada.io/robots.txt)을 존중하여 공식 RSS를 낮은 빈도로 수집한다. 로그인·댓글·비공개 API는 사용하지 않는다. 상세 페이지가 403을 반환하면 우회하지 않고 RSS로만 게시한다. 확인된 원문 URL만 중복 비교용 별칭으로 저장하며, 원문 주소를 얻지 못한 경우 한·영 중복 탐지에 한계가 있다.
 

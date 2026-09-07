@@ -7,10 +7,12 @@
 소스는 성격에 따라 우선순위를 다르게 둔다.
 
 - **독립 분석**: AI and Games, Games and AI
-- **전문 보도**: Game Developer, Video Games Industry Memo
+- **전문 보도·제작 인터뷰**: Game Developer, Video Games Industry Memo, 80 Level
 - **한국어 큐레이션**: GeekNews — 게임 AI와 제작에 활용할 AI 개발 도구만 하루 최대 10건
 - **연구·기술 원문**: Microsoft Research Game Intelligence, KRAFTON AI, Google DeepMind
-- **엔진·런타임**: NVIDIA Developer, Inworld, Unreal Engine
+- **엔진·런타임**: NVIDIA Developer, Inworld, Unreal Engine, Convai
+- **AI 코딩 도구**: Claude Code, Codex, Cursor — 주요 기능·작업 자동화 업데이트
+- **이미지·3D 에셋 제작**: ComfyUI, InvokeAI, Meshy — 공개 기능·워크플로·엔진 연동
 - **논문**: arXiv의 게임 AI·NPC·게임 에이전트·절차 생성 관련 최신 논문
 
 회사 블로그는 빠르고 구체적인 대신 홍보 관점이 강하다. 따라서 독립 분석과 전문 보도의 가중치를 높이고, `crypto`·`web3`·`NFT` 등 게임 AI와 무관한 홍보성 글은 감점한다.
@@ -18,13 +20,13 @@
 ## 동작 흐름
 
 ```text
-RSS / HTML 목록 / arXiv
+RSS / 공개 HTML 목록 / GitHub Releases API / arXiv
         ↓
 게임 AI 키워드 관련성 점수
         ↓
 URL·유사 제목 중복 제거
         ↓
-출처 신뢰도 + 최신성으로 순위 결정
+출처 신뢰도 + 뉴스 7일 / 제작 자료 30일로 순위 결정
         ↓
 선택된 원문의 대표 이미지·짧은 공개 문맥 보강
         ↓
@@ -34,6 +36,19 @@ URL·유사 제목 중복 제거
 ```
 
 본문 전체를 무단 복제하지 않는다. RSS가 제공한 제목·설명과 원문 페이지가 공개한 짧은 문맥만 저장·요약하고 항상 원문 링크를 보낸다.
+
+### 새 소스와 공개일 기준
+
+2026-09-07에 8개 소스를 추가해 활성 수집처는 총 20곳이다. ComfyUI는 공식 RSS, Claude Code·Codex·InvokeAI는 공식 GitHub Releases API, Cursor·Meshy·Convai·80 Level은 공개 HTML 목록을 사용한다. 날짜·짧은 소개·이미지 확인에 필요한 상세 조회만 제한적으로 수행한다.
+
+- `뉴스`: 신제품·기능·릴리스 등은 원래 공개일부터 최근 7일만 후보로 사용한다.
+- `제작 자료`: 명확한 튜토리얼·구현 사례·인터뷰는 최근 30일까지 검토한다. 주간 잡담이나 일반 회사 소식은 제작 자료로 바꿔 오래 노출하지 않는다.
+- 게시물 상단에 `뉴스` 또는 `제작 자료`와 `원문 공개 YYYY-MM-DD`를 표시한다. 날짜가 없거나 미래로 표시된 글은 자동 발행 후보에서 제외한다.
+- 새 소스의 후원 기사, 행사·챌린지·할인·컨설팅 홍보는 제외한다. 코딩 작업, 에셋 제작, 게임 엔진·NPC 연동 등 실제 제작 작업과 연결되는 항목을 선별하며, 회사 자료는 `공식 발표 · 업체 관점`으로 표시한다.
+- GitHub의 초안·사전 릴리스·본문 없는 태그·내용 없는 버그 수정 공지는 제외한다. 같은 기능 발표 이후 이어지는 패치는 묶고, 새 기능 발표는 별도 후보로 유지한다. 그룹에 포함된 릴리스 주소는 모두 읽음 별칭으로 기록하여 후속 실행의 중복을 막는다.
+- 확인된 원문 주소·그룹 별칭·유사 제목으로 중복을 제거한다. 긱뉴스 상세 페이지가 차단되어 원문 주소를 확인하지 못한 경우 언어가 다른 두 제목의 중복 탐지는 여전히 제한된다.
+
+각 실행 로그에는 출처별 `수집 / 선별 / 기간 내 미발송` 후보 수를 남긴다. 소스 확대 효과는 여러 날의 후보 수와 실제 발행량으로 평가하며, 같은 후보가 여러 실행에서 관측된 횟수를 새 기사 수로 더하지 않는다.
 
 ### GeekNews 선별
 
@@ -155,13 +170,14 @@ python main.py --bootstrap
 - `morning_target`: 오전 누적 목표·시간별 중간 목표·정오 마감·자동 발행 종료 시각
 - `max_items_per_run`: 오전 목표 달성 후 오후 예약 실행 1회당 최대 기사 수
 - `max_items_per_source`: 한 출처가 브리핑을 독점하지 않게 하는 상한
-- `freshness_days`: 며칠 이내 글만 후보로 볼지
+- `freshness_days`: 뉴스의 원래 공개일 기준 후보 기간 (7일)
+- `resource_freshness_days`: 제작 자료의 원래 공개일 기준 후보 기간 (30일)
 - `source_weight`: 출처 우선순위
 - 소스의 `max_items_per_day`: 여러 회차에 걸친 한국 시간 기준 출처별 하루 상한
 - `min_relevance`: 일반 피드에서 게임 AI 기사로 인정할 최소 점수
 - `positive_keywords` / `negative_keywords`: 선별 기준
 
-새 소스는 RSS를 우선한다. RSS가 없을 때만 `kind: html`과 보수적인 `link_pattern`을 추가한다. 사이트 이용약관이나 robots 정책이 수집을 금지하면 해당 소스를 사용하지 않는다.
+새 소스는 공식 RSS/API를 우선한다. RSS/API가 없을 때만 `kind: html`과 보수적인 `link_pattern` 또는 사이트별 목록 파서를 추가한다. 사이트 이용약관이나 robots 정책이 수집을 금지하면 해당 소스를 사용하지 않는다.
 
 Ubisoft La Forge도 좋은 원문 소스지만 현재 뉴스 목록이 브라우저에서만 그려져 안정적인 링크를 얻을 수 없어 설정에 비활성 상태로 남겨 두었다. 무거운 브라우저 자동화를 억지로 돌리기보다 RSS나 서버 렌더링 목록이 생길 때 활성화하는 편이 안전하다.
 

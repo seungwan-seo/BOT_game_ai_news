@@ -36,6 +36,14 @@ class GeekNewsEditorialTests(unittest.TestCase):
         self.assertTrue(evaluate_article(article))
         self.assertEqual(article.category, "🛠 개발 도구")
 
+    def test_ai_development_pace_is_not_inference_runtime_speed(self):
+        essay = self.article(
+            "Alien Mind: 인간과는 다른, 낯선 지성",
+            "OpenAI는 추론 모델의 발전이 재귀적 자기개선으로 이어질 수 있다고 예상하며 개발 속도를 안전성에 맞춰 제한해야 한다고 강조했다.",
+        )
+        self.assertFalse(evaluate_article(essay))
+        self.assertTrue(evaluate_article(self.article("LLM 추론 속도 2배 개선 실험 공개")))
+
     def test_direct_game_npc_article(self):
         article = self.article("게임 NPC에 LLM을 통합하는 실험 공개")
         self.assertTrue(evaluate_article(article))

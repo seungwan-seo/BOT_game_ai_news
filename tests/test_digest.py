@@ -1,12 +1,21 @@
 from __future__ import annotations
 
 import unittest
+from datetime import datetime, timezone
 
 from game_ai_news_bot.digest import TELEGRAM_SAFE_LIMIT, build_article_post
 from game_ai_news_bot.models import Article, DigestItem
 
 
 class DigestTests(unittest.TestCase):
+    def test_resource_shows_original_publication_day_in_kst(self):
+        article = Article("s", "Source", "Tutorial", "https://example.com/a",
+            published_at=datetime(2026, 8, 20, 16, tzinfo=timezone.utc),
+            perspective="vendor", metadata={"content_kind": "resource"})
+        message = build_article_post(DigestItem(article, "제작 튜토리얼", "요약", "적용 방법"), "브리핑")
+        self.assertIn("제작 자료 · 원문 공개 2026-08-21", message)
+        self.assertIn("업체 관점", message)
+
     def test_escapes_untrusted_content_and_keeps_link(self):
         article = Article("s", "A&B", "raw", "https://example.com/a", category="🤖 NPC·에이전트")
         item = DigestItem(article, "<새 기능>", "A & B", "검증 <필요>")

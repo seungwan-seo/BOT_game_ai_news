@@ -27,6 +27,9 @@ class Article:
         original = self.metadata.get("original_url")
         if isinstance(original, str) and original.startswith(("https://", "http://")):
             urls.add(original)
+        aliases = self.metadata.get("alias_urls", [])
+        if isinstance(aliases, list):
+            urls.update(alias for alias in aliases if isinstance(alias, str) and alias.startswith(("https://", "http://")))
         return urls
 
 

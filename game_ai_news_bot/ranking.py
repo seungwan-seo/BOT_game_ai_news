@@ -7,6 +7,8 @@ from difflib import SequenceMatcher
 
 from .models import Article
 from .geeknews import evaluate_article as evaluate_geeknews
+from .editorial import classify_content_kind, evaluate_source_article
+from .freshness import is_fresh
 
 
 CATEGORY_RULES = [
@@ -65,7 +67,10 @@ def _recency_score(article: Article, now: datetime) -> float:
     return 0.0
 
 
-def rank_articles(articles: list[Article], config: dict, now: datetime | None = None) -> list[Article]:
+def rank_articles(
+    articles: list[Article], config: dict, now: datetime | None = None,
+    *, fresh_only: bool = False,
+) -> list[Article]:
     now = now or datetime.now(timezone.utc)
     ranking = config.get("ranking", {})
     positive = ranking.get("positive_keywords", {})
@@ -75,6 +80,19 @@ def rank_articles(articles: list[Article], config: dict, now: datetime | None = 
 
     for article in articles:
         source = source_config.get(article.source_id, {})
+        article.metadata["content_kind"] = classify_content_kind(article, source)
+        # Invalid or expired dates must not suppress an eligible duplicate.
+        if fresh_only and not is_fresh(article, config.get("digest", {}), now):
+            continue
+        if source.get("editorial_profile"):
+            if not evaluate_source_article(article, source):
+                continue
+            article.score = (
+                article.source_weight + article.metadata["editorial_score"]
+                + _recency_score(article, now)
+            )
+            ranked.append(article)
+            continue
         if source.get("editorial_filter") == "geeknews":
             if not evaluate_geeknews(article):
                 continue
@@ -102,20 +120,22 @@ def rank_articles(articles: list[Article], config: dict, now: datetime | None = 
 def deduplicate(articles: list[Article], similarity: float = 0.84) -> list[Article]:
     kept: list[Article] = []
     seen_urls: set[str] = set()
-    seen_titles: list[str] = []
+    seen_titles: list[tuple[str, str]] = []
     for article in articles:
         if article.identity_urls & seen_urls:
             continue
         title = normalized_title(article.title)
+        release_group = str(article.metadata.get("release_group_key", ""))
         duplicate = any(
             SequenceMatcher(None, title, previous).ratio() >= similarity
-            for previous in seen_titles
+            for previous, previous_group in seen_titles
             if title and previous
+            and not (release_group and previous_group and release_group != previous_group)
         )
         if duplicate:
             continue
         seen_urls.update(article.identity_urls)
-        seen_titles.append(title)
+        seen_titles.append((title, release_group))
         kept.append(article)
     return kept
 
