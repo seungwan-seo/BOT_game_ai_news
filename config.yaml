@@ -1,8 +1,21 @@
 digest:
   title: "게임 AI 뉴스"
   timezone: "Asia/Seoul"
-  daily_post_limit: 10
+  daily_post_limit: 20
   max_items_per_run: 1
+  # 오전 누적 10건을 먼저 채우고, 오후에는 기존처럼 회차당 1건씩 발행한다.
+  morning_target:
+    enabled: true
+    count: 10
+    deadline_hour: 12
+    end_hour: 22
+    milestones:
+      - time: "07:00"
+        count: 3
+      - time: "08:30"
+        count: 6
+      - time: "10:00"
+        count: 10
   max_items_per_source: 2
   freshness_days: 4
   max_description_chars: 2200

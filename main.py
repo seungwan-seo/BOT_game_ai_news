@@ -24,8 +24,11 @@ from game_ai_news_bot.promotion import (
     promotion_is_due,
     select_promotion,
 )
-from game_ai_news_bot.ranking import deduplicate, rank_articles, select_diverse
+from game_ai_news_bot.ranking import rank_articles
+from game_ai_news_bot.scheduling import planned_news_limit
+from game_ai_news_bot.selection import select_enriched_articles
 from game_ai_news_bot.state import (
+    KST,
     delivered_today,
     delivered_for_source_today,
     load_state,
@@ -67,6 +70,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--feedback-report", action="store_true", help="저장된 반응 통계를 콘솔에 출력 (API 호출 없음)")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
+    if args.limit is not None and args.limit < 1:
+        parser.error("--limit은 1 이상이어야 합니다.")
     if args.collect_feedback or args.feedback_report:
         if (args.collect_feedback and args.feedback_report) or any((
             args.bootstrap, args.send_promo_now, args.send_channel_guide,
@@ -182,22 +187,51 @@ def main() -> int:
         except FeedbackCollectionError as exc:
             logging.warning("%s; 이번 뉴스 발송은 계속합니다.", exc)
 
-    collector = Collector(
-        config.get("http", {}),
-        description_limit=int(digest_config.get("max_description_chars", 900)),
-    )
     sources = config["sources"]
     if args.source:
         sources = [source for source in sources if source["id"] == args.source]
         if not sources:
             logging.error("등록되지 않은 소스입니다: %s", args.source)
             return 2
+
+    per_run_limit = int(
+        digest_config.get("max_items_per_run", digest_config.get("max_items", 1))
+    )
+    limit = 1 if args.article_url else (args.limit or per_run_limit)
+    automatic_pacing = not any((
+        args.bootstrap, args.article_url, args.source, args.show_all, args.preview_send,
+    )) and args.limit is None
+    is_live_delivery = not args.dry_run and bool(
+        env["telegram_token"] and env["telegram_chat_ids"]
+    )
+    daily_limit = max(1, int(digest_config.get("daily_post_limit", 10)))
+    if automatic_pacing:
+        try:
+            limit = planned_news_limit(digest_config, state, now)
+        except ValueError as exc:
+            logging.error("발행 목표 설정 오류: %s", exc)
+            return 2
+        logging.info(
+            "발행 계획 (KST %s): 오늘 %d건 / 하루 상한 %d건, 이번 회차 최대 %d건",
+            now.astimezone(KST).strftime("%Y-%m-%d %H:%M"),
+            delivered_today(state, now), daily_limit, limit,
+        )
+    if is_live_delivery and not args.bootstrap:
+        limit = min(limit, max(0, daily_limit - delivered_today(state, now)))
+    if limit <= 0 and not args.bootstrap:
+        logging.info("현재 누적 목표·일일 한도를 채웠거나 발행 시간 밖입니다.")
+        return 2 if args.article_url else 0
+
+    collector = Collector(
+        config.get("http", {}),
+        description_limit=int(digest_config.get("max_description_chars", 900)),
+    )
     articles, errors = collector.collect_all(sources)
     if not articles:
         logging.error("모든 소스에서 수집하지 못했습니다: %s", "; ".join(errors))
         return 2
 
-    ranked = rank_articles(articles, config)
+    ranked = rank_articles(articles, config, now)
     if feedback_config.get("enabled", False) and feedback_config.get("apply_to_ranking", False):
         report = build_feedback_report(state, feedback_config, now)
         for article in ranked:
@@ -219,6 +253,7 @@ def main() -> int:
             if item.published_at is None or item.published_at >= cutoff
         ]
     )
+    blocked = set()
     if not (args.show_all or args.preview_send):
         blocked = set(state["seen"]) | set(state.get("pending_delivery_review", {}))
         fresh = [item for item in fresh if not item.identity_urls.intersection(blocked)]
@@ -234,20 +269,6 @@ def main() -> int:
         print(f"기준점 생성 완료: {len(ranked)}건을 읽음 처리했습니다.")
         return 0
 
-    per_run_limit = int(
-        digest_config.get("max_items_per_run", digest_config.get("max_items", 1))
-    )
-    limit = 1 if args.article_url else (args.limit or per_run_limit)
-    is_live_delivery = not args.dry_run and not args.preview_send and bool(
-        env["telegram_token"] and env["telegram_chat_ids"]
-    )
-    daily_limit = max(1, int(digest_config.get("daily_post_limit", 10)))
-    if is_live_delivery:
-        remaining_today = daily_limit - delivered_today(state, now)
-        if remaining_today <= 0:
-            logging.info("오늘의 뉴스 발송 한도 %d건을 이미 채웠습니다.", daily_limit)
-            return 2 if args.article_url else 0
-        limit = min(limit, remaining_today)
     source_limits = {
         source["id"]: max(
             0,
@@ -257,23 +278,25 @@ def main() -> int:
         for source in sources
         if "max_items_per_day" in source
     } if not args.preview_send else {}
-    selected = select_diverse(
+    selected = select_enriched_articles(
         fresh,
-        limit=max(1, limit),
+        limit=limit,
         max_per_source=int(digest_config.get("max_items_per_source", 2)),
         source_limits=source_limits,
+        blocked_urls=blocked,
+        enrich_article=collector.enrich_article,
     )
+    logging.info(
+        "후보 현황: 수집 %d건 → 관련성·중복 선별 %d건 → 최신·미발송 %d건 → 최종 %d/%d건 (수집 실패 %d곳)",
+        len(articles), len(ranked), len(fresh), len(selected), limit, len(errors),
+    )
+    if automatic_pacing and len(selected) < limit:
+        logging.warning(
+            "이번 회차 목표보다 %d건 부족합니다. 최신성·관련성·출처 상한·중복 기준을 유지하고 다음 회차에서 보충합니다.",
+            limit - len(selected),
+        )
     if not selected:
         logging.info("새로 선별된 게임 AI 소식이 없습니다.")
-        return 2 if args.article_url else 0
-
-    for article in selected:
-        collector.enrich_article(article)
-    selected = deduplicate(selected)
-    if not (args.show_all or args.preview_send):
-        selected = [item for item in selected if not item.identity_urls.intersection(blocked)]
-    if not selected:
-        logging.info("원문 주소를 확인한 결과 이미 발송된 기사입니다.")
         return 2 if args.article_url else 0
 
     api_key = "" if args.no_ai else env["gemini_api_key"]
@@ -314,7 +337,15 @@ def main() -> int:
             print("\n[수집 실패 소스]\n- " + "\n- ".join(errors))
         return 0
 
+    sent_count = 0
     for item, message in zip(items, messages, strict=True):
+        # 수집·번역이 길어지거나 일부 게시 중 시간이 경계를 넘었을 수 있다.
+        if automatic_pacing and planned_news_limit(
+            digest_config, state, datetime.now(timezone.utc)
+        ) <= 0:
+            logging.info("실제 발송 시각의 누적 목표·한도·운영 시간을 다시 확인하여 이번 회차를 종료합니다.")
+            break
+
         def record_success(receipts):
             delivery_now = datetime.now(timezone.utc)
             # 중간 게시에서 실패해도 이미 성공한 기사가 다음 실행에 중복되지 않게 즉시 기록한다.
@@ -352,10 +383,11 @@ def main() -> int:
             logging.error("%s", exc)
             return 2
         record_success(receipts)
+        sent_count += 1
 
     if not args.preview_send:
         # 선택하지 않은 좋은 후보는 읽음 처리하지 않고 다음 예약 회차로 넘긴다.
-        if promotion is not None:
+        if promotion is not None and sent_count:
             send_message(
                 env["telegram_token"],
                 env["telegram_chat_ids"],
@@ -368,7 +400,7 @@ def main() -> int:
     logging.info(
         "%s %d건 발송 완료",
         "미리보기 게시물" if args.preview_send else "뉴스 게시물",
-        len(selected),
+        sent_count,
     )
     return 0
 

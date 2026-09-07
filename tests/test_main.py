@@ -46,16 +46,18 @@ class ProductionDeliveryTests(unittest.TestCase):
         )
         self.original_url = "https://example.com/coding-comparison"
 
-    def execute(self, *args, send_error=None, poll_error=None, receipt_date=None):
+    def execute(self, *args, send_error=None, poll_error=None, receipt_date=None, articles=None):
         with ExitStack() as stack:
             stack.enter_context(patch("sys.argv", ["main.py", *args]))
             stack.enter_context(patch.object(app, "load_config", return_value=self.config))
             stack.enter_context(patch.object(app, "env_settings", return_value=self.env))
             collector = stack.enter_context(patch.object(app, "Collector")).return_value
-            collector.collect_all.return_value = ([self.article], [])
+            collector.collect_all.return_value = (articles if articles is not None else [self.article], [])
 
             def enrich(article):
-                article.metadata["original_url"] = self.original_url
+                article.metadata["original_url"] = (
+                    self.original_url if article.url == self.article.url else article.url + "/original"
+                )
                 return article
 
             collector.enrich_article.side_effect = enrich
@@ -236,6 +238,82 @@ class ProductionDeliveryTests(unittest.TestCase):
             ]), redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as raised:
                 app.parse_args()
             self.assertEqual(raised.exception.code, 2)
+
+    def test_automatic_morning_catchup_then_skip_and_resume_afternoon(self):
+        self.config["digest"].update({
+            "daily_post_limit": 20,
+            "morning_target": {"enabled": True, "count": 10},
+        })
+        now = datetime(2026, 9, 7, 1, 13, tzinfo=timezone.utc)  # KST 10:13
+        state = load_state(self.state_path)
+        mark_delivered(state, ["https://example.com/sent-a", "https://example.com/sent-b"], now, source_id="geeknews")
+        save_state(self.state_path, state)
+        headlines = [
+            "Procedural worlds from sketches", "Adaptive enemy behavior trees",
+            "Voice synthesis for dialogue", "Automated game playtesting",
+            "Motion capture animation model", "Texture generation workflow",
+            "Navigation mesh learning", "Character memory benchmark",
+        ]
+        candidates = [Article(
+            f"source-{i // 2}", f"Source {i // 2}", title,
+            f"https://example.com/fresh/{i}", published_at=now,
+        ) for i, title in enumerate(headlines)]
+        self.config["translation"] = {"enabled": False}
+        with patch.object(app, "datetime", wraps=datetime) as clock:
+            clock.now.return_value = now
+            result, sender, _, _ = self.execute("--no-promo", articles=candidates)
+            self.assertEqual(result, 0)
+            self.assertEqual(sender.call_count, 8)
+            self.assertEqual(load_state(self.state_path)["delivery_count"], 10)
+            result, sender, collector, _ = self.execute("--no-promo", articles=candidates)
+            self.assertEqual(result, 0)
+            sender.assert_not_called()
+            collector.collect_all.assert_not_called()
+            clock.now.return_value = now + timedelta(hours=3)
+            fresh = Article("other", "Other", "AI lighting assistant release", "https://example.com/afternoon", published_at=now)
+            result, sender, _, _ = self.execute("--no-promo", articles=[fresh])
+            self.assertEqual(result, 0)
+            sender.assert_called_once()
+            self.assertEqual(load_state(self.state_path)["delivery_count"], 11)
+
+    def test_manual_limits_and_source_are_not_expanded_by_morning_target(self):
+        self.config["digest"]["morning_target"] = {"enabled": True, "count": 10}
+        for args in (("--limit", "1"), ("--source", "geeknews"), ("--article-url", self.article.url, "--source", "geeknews")):
+            with self.subTest(args=args), patch.object(app, "planned_news_limit") as planner:
+                result, sender, _, _ = self.execute(*args, "--dry-run", "--no-promo")
+                self.assertEqual(result, 0)
+                planner.assert_not_called()
+                sender.assert_not_called()
+                self.assertFalse(self.state_path.exists())
+
+    def test_automatic_dry_run_uses_plan_without_delivery_or_state_changes(self):
+        self.config["digest"]["morning_target"] = {"enabled": True, "count": 10}
+        with patch.object(app, "planned_news_limit", return_value=8) as planner:
+            result, sender, _, output = self.execute("--dry-run", "--no-promo")
+        self.assertEqual(result, 0)
+        planner.assert_called_once()
+        sender.assert_not_called()
+        self.assertIn("DRY-RUN", output)
+        self.assertFalse(self.state_path.exists())
+
+    def test_nonpositive_manual_limit_is_rejected(self):
+        for limit in ("0", "-1"):
+            with self.subTest(limit=limit), patch("sys.argv", ["main.py", "--limit", limit]), redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                app.parse_args()
+
+    def test_automatic_delivery_rechecks_hours_after_slow_collection(self):
+        self.config["digest"].update({
+            "daily_post_limit": 20,
+            "morning_target": {"enabled": True, "count": 10},
+        })
+        started = datetime(2026, 9, 7, 12, 59, tzinfo=timezone.utc)  # KST 21:59
+        with patch.object(app, "datetime", wraps=datetime) as clock:
+            clock.now.side_effect = [started, started + timedelta(minutes=2)]
+            result, sender, collector, _ = self.execute()
+        self.assertEqual(result, 0)
+        collector.enrich_article.assert_called_once()
+        sender.assert_not_called()  # 기사와 홍보 모두 발송하지 않는다.
+        self.assertFalse(self.state_path.exists())
 
 
 if __name__ == "__main__":
