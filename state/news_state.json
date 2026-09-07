@@ -5,9 +5,9 @@
     "geeknews": 2
   },
   "feedback": {
-    "last_batch_size": 0,
-    "last_poll_at": "2026-09-07T01:07:16.394433+00:00",
-    "next_update_id": 637924632,
+    "last_batch_size": 1,
+    "last_poll_at": "2026-09-07T07:33:01.422620+00:00",
+    "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
@@ -51,18 +51,18 @@
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
         "down": 0,
-        "learning_date": 0,
+        "learning_date": 1788747437,
         "learning_down": 0,
-        "learning_up": 0,
-        "learning_update_id": -1,
+        "learning_up": 1,
+        "learning_update_id": 637924632,
         "message_id": 28,
         "published_at": "2026-09-07T00:25:02+00:00",
-        "reaction_date": 0,
-        "reaction_update_id": -1,
+        "reaction_date": 1788747437,
+        "reaction_update_id": 637924632,
         "sent_at": "2026-09-07T01:07:55+00:00",
         "source_id": "geeknews",
         "title": "GPT-6 Astra: 하네스가 곧 제품이다",
-        "up": 0,
+        "up": 1,
         "url": "https://news.hada.io/topic?id=33301",
         "window_hours": 48.0
       }
