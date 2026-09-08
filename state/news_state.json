@@ -1,8 +1,8 @@
 {
-  "delivery_count": 10,
+  "delivery_count": 12,
   "delivery_day_kst": "2026-09-08",
   "delivery_source_counts": {
-    "claude_code": 2,
+    "claude_code": 4,
     "codex": 1,
     "convai": 2,
     "eighty_level": 2,
@@ -11,7 +11,7 @@
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-08T02:09:40.517611+00:00",
+    "last_poll_at": "2026-09-08T05:14:56.025966+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -260,19 +260,60 @@
         "up": 0,
         "url": "https://convai.com/blog/mixed-reality-ai-characters-unity-6-meta-quest-convai-xr-tutorial",
         "window_hours": 48.0
+      },
+      "-1004468125637:39": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 39,
+        "published_at": "2026-09-02T22:33:51+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-08T05:16:47+00:00",
+        "source_id": "claude_code",
+        "title": "Claude Code v2.1.259 — Added managedMcpServers managed setting: organizations can provide HTTP/SSE MCP servers to every user (same entry shape as .mcp.json)",
+        "up": 0,
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.259",
+        "window_hours": 48.0
+      },
+      "-1004468125637:40": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 40,
+        "published_at": "2026-09-01T17:53:52+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-08T05:16:49+00:00",
+        "source_id": "claude_code",
+        "title": "Claude Code v2.1.257 — Added Claude Fable 5.1 (claude-fable-5-1), now the default Fable model — 1M context, $10/$50 per Mtok with $0.25/Mtok cache reads",
+        "up": 0,
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.257",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-05T04:43:20.477807+00:00",
-  "last_success_at": "2026-09-08T02:14:20.247559+00:00",
+  "last_success_at": "2026-09-08T05:16:51.238635+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
     "https://80.lv/articles/interview-new-indie-game-uses-local-ai-model-trained-entirely-on-studio-s-own-artists": "2026-09-08T02:14:03.369902+00:00",
     "https://convai.com/blog/interactive-ai-characters-unity-convai-actions": "2026-09-08T02:14:11.124357+00:00",
     "https://convai.com/blog/mixed-reality-ai-characters-unity-6-meta-quest-convai-xr-tutorial": "2026-09-08T02:14:20.247559+00:00",
+    "https://github.com/anthropics/claude-code/releases/tag/v2.1.257": "2026-09-08T05:16:51.238635+00:00",
+    "https://github.com/anthropics/claude-code/releases/tag/v2.1.258": "2026-09-08T05:16:51.238635+00:00",
+    "https://github.com/anthropics/claude-code/releases/tag/v2.1.259": "2026-09-08T05:16:48.996408+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.260": "2026-09-08T02:14:16.256386+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.261": "2026-09-08T02:14:14.538785+00:00",
     "https://github.com/invoke-ai/InvokeAI/releases/tag/v6.14.1": "2026-09-08T02:14:12.830758+00:00",
