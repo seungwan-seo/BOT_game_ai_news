@@ -350,6 +350,8 @@ class ProductionDeliveryTests(unittest.TestCase):
             "morning_target": {"enabled": True, "count": 10},
         })
         started = datetime(2026, 9, 7, 12, 59, tzinfo=timezone.utc)  # KST 21:59
+        # Keep the fixture inside the mocked clock's freshness window on any run date.
+        self.article.published_at = started - timedelta(hours=1)
         with patch.object(app, "datetime", wraps=datetime) as clock:
             clock.now.side_effect = [started, started + timedelta(minutes=2)]
             result, sender, collector, _ = self.execute()
