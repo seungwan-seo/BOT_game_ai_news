@@ -4,6 +4,8 @@ import html
 import json
 import logging
 import re
+from contextlib import contextmanager
+from contextvars import ContextVar
 
 import requests
 
@@ -14,6 +16,43 @@ from .geeknews import build_summary as geeknews_summary, build_insight as geekne
 logger = logging.getLogger(__name__)
 
 MYMEMORY_TRANSLATE_URL = "https://api.mymemory.translated.net/get"
+_FAILED_PROVIDERS: ContextVar[set[str] | None] = ContextVar("failed_translation_providers", default=None)
+
+
+@contextmanager
+def translation_session():
+    """Share outage status across refill batches, reset it for the next run."""
+    if _FAILED_PROVIDERS.get() is not None:
+        yield
+        return
+    token = _FAILED_PROVIDERS.set(set())
+    try:
+        yield
+    finally:
+        _FAILED_PROVIDERS.reset(token)
+
+
+def _provider_failed(provider: str) -> bool:
+    return provider in (_FAILED_PROVIDERS.get() or set())
+
+
+def _mark_provider_failed(provider: str) -> None:
+    failed = _FAILED_PROVIDERS.get()
+    if failed is not None:
+        failed.add(provider)
+
+
+def _korean_text(value: object) -> bool:
+    return isinstance(value, str) and len(re.findall(r"[가-힣]", value)) >= 2
+
+
+def _ready(item: DigestItem) -> bool:
+    # Validate each user-facing field, not EN · original-title display metadata.
+    return all(_korean_text(text) for text in (item.title_ko, item.summary_ko, item.insight_ko))
+
+
+def _held(article: Article) -> None:
+    logger.warning("한국어 제목·요약 미완성으로 발행 보류 (읽음 기록 없음): %s", article.url)
 
 
 INSIGHT_RULES = (
@@ -93,8 +132,8 @@ def translate_text_to_korean(value: str, timeout: int = 12) -> str:
         str(body.get("responseData", {}).get("translatedText") or "")
     )
     translated = re.sub(r"\s+", " ", translated).strip()
-    if not translated or translated.upper().startswith("MYMEMORY WARNING"):
-        raise ValueError("번역 결과가 비어 있거나 할당량을 초과했습니다.")
+    if not _korean_text(translated) or translated.upper().startswith("MYMEMORY WARNING"):
+        raise ValueError("한국어 번역 결과를 받지 못했습니다.")
     return translated
 
 
@@ -186,50 +225,67 @@ def fallback_insight(article: Article) -> str:
 def fallback_items(
     articles: list[Article], translate_titles: bool = True, translation_timeout: int = 12
 ) -> tuple[list[DigestItem], str]:
+    with translation_session():
+        return _fallback_items(articles, translate_titles, translation_timeout)
+
+
+def _fallback_items(
+    articles: list[Article], translate_titles: bool, translation_timeout: int,
+) -> tuple[list[DigestItem], str]:
     items = []
     for article in articles:
         if article.metadata.get("editorial_filter") == "geeknews":
-            items.append(DigestItem(
+            item = DigestItem(
                 article=article,
                 title_ko=_truncate(article.title, 180),
                 summary_ko=geeknews_summary(article),
                 insight_ko=geeknews_insight(article),
-            ))
+            )
+            if _ready(item):
+                items.append(item)
+            else:
+                _held(article)
             continue
         summary_source = _summary_source(article)
         summary = summary_source or "공개된 요약이 없어 제목과 원문을 함께 확인해야 합니다."
         translated_title = article.title
-        if translate_titles:
+        needs_translation = not (_korean_text(translated_title) and _korean_text(summary))
+        if needs_translation and (not translate_titles or _provider_failed("mymemory")):
+            _held(article)
+            continue
+        if translate_titles and needs_translation:
             try:
-                translated_title = translate_title_to_korean(
-                    article.title, timeout=translation_timeout
-                )
-            except Exception as exc:
-                logger.warning(
-                    "제목 번역 실패, 영문 원제 사용 (%s): %s",
-                    article.source_name,
-                    exc,
-                )
-            if summary_source:
-                try:
+                if not _korean_text(translated_title):
+                    translated_title = translate_title_to_korean(
+                        article.title, timeout=translation_timeout
+                    )
+                if not _korean_text(translated_title):
+                    raise ValueError("제목 번역이 한국어가 아닙니다.")
+                if summary_source and not _korean_text(summary):
                     summary = translate_text_to_korean(
                         summary_source, timeout=translation_timeout
                     )
-                except Exception as exc:
-                    logger.warning(
-                        "요약 번역 실패, 원문 발췌 사용 (%s): %s",
-                        article.source_name,
-                        exc,
-                    )
-        items.append(
-            DigestItem(
-                article=article,
-                title_ko=_truncate(translated_title, 180),
-                summary_ko=_truncate(summary, 200),
-                insight_ko=fallback_insight(article),
-            )
+                if not _korean_text(summary):
+                    raise ValueError("요약 번역이 한국어가 아닙니다.")
+            except Exception as exc:
+                # Do not repeatedly wait on an unavailable service for every item.
+                # Log exception type only; provider URLs may include credentials.
+                _mark_provider_failed("mymemory")
+                logger.warning("MyMemory 번역 실패 (%s): %s; 이번 회차 외부 번역 중단",
+                               article.source_name, type(exc).__name__)
+                _held(article)
+                continue
+        item = DigestItem(
+            article=article,
+            title_ko=_truncate(translated_title, 180),
+            summary_ko=_truncate(summary, 200),
+            insight_ko=fallback_insight(article),
         )
-    return items, category_trend(articles)
+        if _ready(item):
+            items.append(item)
+        else:
+            _held(article)
+    return items, category_trend([item.article for item in items])
 
 
 def _strip_code_fence(text: str) -> str:
@@ -294,20 +350,32 @@ def summarize_with_gemini(
     text = body["candidates"][0]["content"]["parts"][0]["text"]
     parsed = json.loads(_strip_code_fence(text))
     returned = {int(item["id"]): item for item in parsed.get("items", [])}
-    # Gemini가 성공한 경우에는 별도의 제목 번역 API 호출이 필요 없다.
-    fallback, fallback_trend = fallback_items(articles, translate_titles=False)
     items: list[DigestItem] = []
+    missing: list[Article] = []
     for index, article in enumerate(articles):
         item = returned.get(index, {})
-        items.append(
-            DigestItem(
-                article=article,
-                title_ko=_truncate(str(item.get("title_ko") or fallback[index].title_ko), 180),
-                summary_ko=_truncate(str(item.get("summary_ko") or fallback[index].summary_ko), 180),
-                insight_ko=_truncate(str(item.get("insight_ko") or fallback[index].insight_ko), 130),
-            )
+        title = item.get("title_ko")
+        summary = item.get("summary_ko")
+        insight = item.get("insight_ko")
+        if not (_korean_text(title) and _korean_text(summary)):
+            missing.append(article)
+            continue
+        candidate = DigestItem(
+            article=article,
+            title_ko=_truncate(title, 180),
+            summary_ko=_truncate(summary, 180),
+            insight_ko=_truncate(insight if _korean_text(insight) else fallback_insight(article), 130),
         )
-    trend = _truncate(str(parsed.get("trend_ko") or fallback_trend), 190)
+        if _ready(candidate):
+            items.append(candidate)
+        else:
+            missing.append(article)
+    # Incomplete/English Gemini fields must not fall back to untranslated English.
+    fallback, _ = fallback_items(missing, translate_titles, translation_timeout)
+    by_url = {item.article.url: item for item in [*items, *fallback]}
+    items = [by_url[a.url] for a in articles if a.url in by_url]
+    trend = parsed.get("trend_ko")
+    trend = _truncate(trend if _korean_text(trend) else category_trend([item.article for item in items]), 190)
     return items, trend
 
 
@@ -318,6 +386,14 @@ def summarize(
     translate_titles: bool = True,
     translation_timeout: int = 12,
 ) -> tuple[list[DigestItem], str]:
+    with translation_session():
+        return _summarize(articles, api_key, model, translate_titles, translation_timeout)
+
+
+def _summarize(
+    articles: list[Article], api_key: str, model: str,
+    translate_titles: bool, translation_timeout: int,
+) -> tuple[list[DigestItem], str]:
     # 긱뉴스의 한국어 소개를 재번역하거나 Gemini로 불필요하게 다시 만들지 않는다.
     if any(a.metadata.get("editorial_filter") == "geeknews" for a in articles):
         others = [a for a in articles if a.metadata.get("editorial_filter") != "geeknews"]
@@ -325,8 +401,9 @@ def summarize(
         by_url = {item.article.url: item for item in other_items}
         geek_items, _ = fallback_items([a for a in articles if a.metadata.get("editorial_filter") == "geeknews"])
         by_url.update({item.article.url: item for item in geek_items})
-        return [by_url[a.url] for a in articles], category_trend(articles)
-    if not api_key:
+        items = [by_url[a.url] for a in articles if a.url in by_url]
+        return items, category_trend([item.article for item in items])
+    if not api_key or _provider_failed("gemini"):
         return fallback_items(articles, translate_titles, translation_timeout)
     try:
         return summarize_with_gemini(
@@ -337,5 +414,6 @@ def summarize(
             translation_timeout=translation_timeout,
         )
     except Exception as exc:
-        logger.warning("Gemini 요약 실패, 규칙 기반 요약 사용: %s", exc)
+        _mark_provider_failed("gemini")
+        logger.warning("Gemini 요약 실패 (%s), 한국어 번역 경로 시도", type(exc).__name__)
         return fallback_items(articles, translate_titles, translation_timeout)

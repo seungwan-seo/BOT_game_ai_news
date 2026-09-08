@@ -37,7 +37,7 @@ from game_ai_news_bot.state import (
     mark_seen,
     save_state,
 )
-from game_ai_news_bot.summarizer import summarize
+from game_ai_news_bot.summarizer import summarize, translation_session
 from game_ai_news_bot.telegram import TelegramSendError, send_message
 
 
@@ -283,35 +283,57 @@ def main() -> int:
         for source in sources
         if "max_items_per_day" in source
     } if not args.preview_send else {}
-    selected = select_enriched_articles(
-        fresh,
-        limit=limit,
-        max_per_source=int(digest_config.get("max_items_per_source", 2)),
-        source_limits=source_limits,
-        blocked_urls=blocked,
-        enrich_article=collector.enrich_article,
-    )
-    logging.info(
-        "후보 현황: 수집 %d건 → 관련성·중복 선별 %d건 → 최신·미발송 %d건 → 최종 %d/%d건 (수집 실패 %d곳)",
-        len(articles), len(ranked), len(fresh), len(selected), limit, len(errors),
-    )
-    if automatic_pacing and len(selected) < limit:
-        logging.warning(
-            "이번 회차 목표보다 %d건 부족합니다. 최신성·관련성·출처 상한·중복 기준을 유지하고 다음 회차에서 보충합니다.",
-            limit - len(selected),
-        )
-    if not selected:
-        logging.info("새로 선별된 게임 AI 소식이 없습니다.")
-        return 2 if args.article_url else 0
-
     api_key = "" if args.no_ai else env["gemini_api_key"]
-    items, _trend = summarize(
-        selected,
-        api_key=api_key,
-        model=env["gemini_model"],
-        translate_titles=bool(translation_config.get("enabled", True)),
-        translation_timeout=int(translation_config.get("timeout_seconds", 12)),
+    items = []
+    attempted_urls = set()
+    enriched_by_url = {}
+    rank_order = {article.url: index for index, article in enumerate(fresh)}
+
+    def enrich_once(article):
+        if article.url not in enriched_by_url:
+            enriched_by_url[article.url] = collector.enrich_article(article)
+        return enriched_by_url[article.url]
+
+    with translation_session():
+        while len(items) < limit:
+            completed_urls = {item.article.url for item in items}
+            # 성공 기사를 함께 선별해 보충 배치에도 출처 한도와 중복 검사를 적용한다.
+            selected = select_enriched_articles(
+                [item.article for item in items]
+                + [article for article in fresh if article.url not in attempted_urls],
+                limit=limit,
+                max_per_source=int(digest_config.get("max_items_per_source", 2)),
+                source_limits=source_limits,
+                blocked_urls=blocked,
+                enrich_article=enrich_once,
+            )
+            batch = [article for article in selected if article.url not in completed_urls]
+            if not batch:
+                break
+            # 번역 실패는 이번 실행에서만 제외하고 다음 예약 회차의 후보로 남긴다.
+            attempted_urls.update(article.url for article in batch)
+            translated, _trend = summarize(
+                batch,
+                api_key=api_key,
+                model=env["gemini_model"],
+                translate_titles=bool(translation_config.get("enabled", True)),
+                translation_timeout=int(translation_config.get("timeout_seconds", 12)),
+            )
+            by_url = {item.article.url: item for item in translated}
+            items.extend(by_url[article.url] for article in batch if article.url in by_url)
+    items.sort(key=lambda item: rank_order[item.article.url])
+    logging.info(
+        "후보 현황: 수집 %d건 → 관련성·중복 선별 %d건 → 최신·미발송 %d건 → 한국어 준비 %d/%d건 (수집 실패 %d곳)",
+        len(articles), len(ranked), len(fresh), len(items), limit, len(errors),
     )
+    if automatic_pacing and len(items) < limit:
+        logging.warning(
+            "이번 회차 목표보다 %d건 부족합니다. 한국어 완성·최신성·관련성·출처 상한·중복 기준을 유지하고 다음 회차에서 보충합니다.",
+            limit - len(items),
+        )
+    if not items:
+        logging.info("한국어 게시물로 준비된 새 게임 AI 소식이 없습니다.")
+        return 2 if args.article_url else 0
     messages = [
         build_article_post(
             item,

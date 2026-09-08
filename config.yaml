@@ -27,7 +27,7 @@ http:
   user_agent: "game-ai-news-bot/0.1 (+personal RSS reader; contact via repository)"
 
 # 선택된 영문 제목과 짧은 발췌를 무료 MyMemory API로 한국어 번역한다.
-# 실패해도 영문 원제를 보존하고 브리핑 발송은 계속한다.
+# 한국어 제목·요약이 완성된 기사만 발행한다. 번역 실패 글은 다음 회차에 재시도한다.
 translation:
   enabled: true
   timeout_seconds: 12

@@ -46,7 +46,7 @@ class ProductionDeliveryTests(unittest.TestCase):
         )
         self.original_url = "https://example.com/coding-comparison"
 
-    def execute(self, *args, send_error=None, poll_error=None, receipt_date=None, articles=None):
+    def execute(self, *args, send_error=None, poll_error=None, receipt_date=None, articles=None, original_urls=None):
         with ExitStack() as stack:
             stack.enter_context(patch("sys.argv", ["main.py", *args]))
             stack.enter_context(patch.object(app, "load_config", return_value=self.config))
@@ -55,8 +55,9 @@ class ProductionDeliveryTests(unittest.TestCase):
             collector.collect_all.return_value = (articles if articles is not None else [self.article], [])
 
             def enrich(article):
-                article.metadata["original_url"] = (
-                    self.original_url if article.url == self.article.url else article.url + "/original"
+                article.metadata["original_url"] = (original_urls or {}).get(
+                    article.url,
+                    self.original_url if article.url == self.article.url else article.url + "/original",
                 )
                 return article
 
@@ -282,6 +283,140 @@ class ProductionDeliveryTests(unittest.TestCase):
                 app.parse_args()
             self.assertEqual(raised.exception.code, 2)
 
+    def translation_candidate(self, slug, title, *, source_id="other", weight=0, english=False):
+        return Article(
+            source_id, source_id, title, f"https://example.com/{slug}",
+            description=(
+                "The tool generates editable game assets from reference images for engine import."
+                if english else f"{title}의 구현 절차와 게임 프로젝트에 적용한 결과를 소개합니다."
+            ),
+            published_at=self.article.published_at, source_weight=weight,
+        )
+
+    def test_translation_failure_refills_in_rank_order_with_remaining_quotas(self):
+        self.config["translation"] = {"enabled": False}
+        self.config["sources"][1]["max_items_per_day"] = 2
+        self.config["sources"].append({"id": "cases", "name": "제작 사례"})
+        self.config["digest"].update({"daily_post_limit": 20, "max_items_per_source": 1})
+        state = load_state(self.state_path)
+        mark_delivered(state, [f"https://example.com/archive/{i}" for i in range(17)], source_id="archive")
+        mark_delivered(state, ["https://example.com/previous-tool"], source_id="other")
+        save_state(self.state_path, state)
+        failed = self.translation_candidate("english", "Editable game asset generation", weight=40, english=True)
+        refill = self.translation_candidate("refill", "이미지로 만드는 게임용 입체 소품", weight=30)
+        ready = self.translation_candidate("ready", "캐릭터 기억을 설계한 게임 제작 사례", source_id="cases", weight=20)
+        extra = self.translation_candidate("extra", "자동 음성 제작 도구의 엔진 연동 방법", weight=10)
+        with patch.object(app, "summarize", wraps=app.summarize) as summarizer:
+            result, sender, collector, _ = self.execute(
+                "--limit", "4", "--no-promo", articles=[failed, refill, ready, extra],
+            )
+        self.assertEqual(result, 0)
+        self.assertEqual(
+            [[article.url for article in call.args[0]] for call in summarizer.call_args_list],
+            [[failed.url, ready.url], [refill.url]],
+        )
+        self.assertEqual(
+            [call.kwargs["button_url"] for call in sender.call_args_list],
+            [refill.url, ready.url],
+        )
+        self.assertEqual(collector.enrich_article.call_count, 3)
+        updated = load_state(self.state_path)
+        self.assertEqual(updated["delivery_count"], 20)
+        self.assertEqual(updated["delivery_source_counts"]["other"], 2)
+        self.assertEqual(updated["delivery_source_counts"]["cases"], 1)
+        self.assertNotIn(failed.url, updated["seen"])
+        self.assertNotIn(failed.url + "/original", updated["seen"])
+        self.assertNotIn(extra.url, updated["seen"])
+        self.assertFalse(updated.get("pending_delivery_review"))
+
+    def test_refill_rechecks_enriched_identity_without_repeating_candidates(self):
+        self.config["translation"] = {"enabled": False}
+        failed = self.translation_candidate("failed", "New procedural terrain editor", weight=40, english=True)
+        ready = self.translation_candidate("ready", "게임 대화 모델의 기억 기능 구현", weight=30)
+        duplicate = self.translation_candidate("duplicate", "캐릭터가 이전 만남을 기억하는 방법", weight=20)
+        refill = self.translation_candidate("refill", "게임용 재질을 자동 생성하는 작업 과정", weight=10)
+        shared_original = "https://example.com/shared-original"
+        with patch.object(app, "summarize", wraps=app.summarize) as summarizer:
+            result, sender, collector, _ = self.execute(
+                "--limit", "2", "--no-promo", articles=[failed, ready, duplicate, refill],
+                original_urls={ready.url: shared_original, duplicate.url: shared_original},
+            )
+        self.assertEqual(result, 0)
+        self.assertEqual(
+            [[article.url for article in call.args[0]] for call in summarizer.call_args_list],
+            [[failed.url, ready.url], [refill.url]],
+        )
+        self.assertEqual(
+            [call.kwargs["button_url"] for call in sender.call_args_list],
+            [ready.url, refill.url],
+        )
+        enriched_urls = [call.args[0].url for call in collector.enrich_article.call_args_list]
+        self.assertEqual(len(enriched_urls), len(set(enriched_urls)))
+        self.assertEqual(set(enriched_urls), {article.url for article in [failed, ready, duplicate, refill]})
+        state = load_state(self.state_path)
+        self.assertEqual(state["delivery_count"], 2)
+        self.assertIn(shared_original, state["seen"])
+        self.assertNotIn(failed.url, state["seen"])
+        self.assertNotIn(duplicate.url, state["seen"])
+
+    def test_all_translation_failures_leave_state_unchanged_without_promotion(self):
+        self.config["translation"] = {"enabled": False}
+        state = load_state(self.state_path)
+        mark_delivered(state, ["https://example.com/previous"], source_id="other")
+        save_state(self.state_path, state)
+        before = self.state_path.read_bytes()
+        failed = [
+            self.translation_candidate("first", "Scene generation from hand drawn sketches", weight=20, english=True),
+            self.translation_candidate("second", "Voice synthesis engine integration", weight=10, english=True),
+        ]
+        for flags in ((), ("--dry-run",)):
+            with self.subTest(flags=flags), patch.object(app, "promotion_is_due") as promotion, patch.object(app, "summarize", wraps=app.summarize) as summarizer:
+                result, sender, collector, output = self.execute("--limit", "1", *flags, articles=failed)
+            self.assertEqual(result, 0)
+            self.assertEqual(summarizer.call_count, 2)
+            self.assertEqual(collector.enrich_article.call_count, 2)
+            sender.assert_not_called()
+            promotion.assert_not_called()
+            self.assertNotIn("Sister", output)
+            self.assertEqual(self.state_path.read_bytes(), before)
+
+    def test_specific_article_translation_failure_returns_error_without_state(self):
+        self.config["translation"] = {"enabled": False}
+        failed = self.translation_candidate("requested", "Mesh generation tool release", english=True)
+        result, sender, collector, _ = self.execute(
+            "--source", "other", "--article-url", failed.url, articles=[failed],
+        )
+        self.assertEqual(result, 2)
+        collector.enrich_article.assert_called_once()
+        sender.assert_not_called()
+        self.assertFalse(self.state_path.exists())
+
+    def test_translation_outage_is_shared_across_refills_and_retried_next_run(self):
+        failed = self.translation_candidate("outage", "Game prop creation from reference images", weight=30, english=True)
+        skipped = self.translation_candidate("untranslated", "Procedural landscape generation", weight=20, english=True)
+        ready = self.translation_candidate("korean", "캐릭터 음성 제작 도구의 적용 사례", weight=10)
+        with patch("game_ai_news_bot.summarizer.translate_title_to_korean", side_effect=TimeoutError) as translator, patch.object(app, "summarize", wraps=app.summarize) as summarizer:
+            result, sender, _, _ = self.execute(
+                "--limit", "1", "--no-promo", articles=[failed, skipped, ready],
+            )
+        self.assertEqual(result, 0)
+        translator.assert_called_once()
+        self.assertEqual(summarizer.call_count, 3)
+        sender.assert_called_once()
+        self.assertEqual(sender.call_args.kwargs["button_url"], ready.url)
+        state = load_state(self.state_path)
+        self.assertNotIn(failed.url, state["seen"])
+        self.assertNotIn(skipped.url, state["seen"])
+        self.assertFalse(state.get("pending_delivery_review"))
+
+        with patch("game_ai_news_bot.summarizer.translate_title_to_korean", return_value="참고 그림으로 게임 소품을 만드는 도구") as translator, patch("game_ai_news_bot.summarizer.translate_text_to_korean", return_value="참고 이미지를 수정 가능한 게임 소품으로 만들어 엔진에 가져오는 기능을 제공합니다."):
+            result, sender, _, _ = self.execute("--limit", "1", "--no-promo", articles=[failed])
+        self.assertEqual(result, 0)
+        translator.assert_called_once()
+        sender.assert_called_once()
+        self.assertEqual(load_state(self.state_path)["delivery_count"], 2)
+        self.assertIn(failed.url, load_state(self.state_path)["seen"])
+
     def test_automatic_morning_catchup_then_skip_and_resume_afternoon(self):
         self.config["digest"].update({
             "daily_post_limit": 20,
@@ -292,14 +427,15 @@ class ProductionDeliveryTests(unittest.TestCase):
         mark_delivered(state, ["https://example.com/sent-a", "https://example.com/sent-b"], now, source_id="geeknews")
         save_state(self.state_path, state)
         headlines = [
-            "Procedural worlds from sketches", "Adaptive enemy behavior trees",
-            "Voice synthesis for dialogue", "Automated game playtesting",
-            "Motion capture animation model", "Texture generation workflow",
-            "Navigation mesh learning", "Character memory benchmark",
+            "스케치로 만드는 절차적 게임 월드", "적 행동 트리의 상황별 전환 방법",
+            "대화를 위한 음성 합성 기능", "자동화된 게임 플레이테스트",
+            "동작 캡처 애니메이션 모델", "게임용 재질 생성 작업 과정",
+            "이동 경로 메시를 학습하는 방법", "캐릭터 기억 성능 평가 결과",
         ]
         candidates = [Article(
             f"source-{i // 2}", f"Source {i // 2}", title,
             f"https://example.com/fresh/{i}", published_at=now,
+            description=f"{title}의 구현 절차와 게임 프로젝트에 적용한 결과를 소개합니다.",
         ) for i, title in enumerate(headlines)]
         self.config["translation"] = {"enabled": False}
         with patch.object(app, "datetime", wraps=datetime) as clock:
@@ -313,7 +449,11 @@ class ProductionDeliveryTests(unittest.TestCase):
             sender.assert_not_called()
             collector.collect_all.assert_not_called()
             clock.now.return_value = now + timedelta(hours=3)
-            fresh = Article("other", "Other", "AI lighting assistant release", "https://example.com/afternoon", published_at=now)
+            fresh = Article(
+                "other", "Other", "게임 조명 제작을 돕는 인공지능 도구 공개",
+                "https://example.com/afternoon", published_at=now,
+                description="게임 엔진에서 조명 배치를 생성하고 밝기를 조절하는 기능을 제공합니다.",
+            )
             result, sender, _, _ = self.execute("--no-promo", articles=[fresh])
             self.assertEqual(result, 0)
             sender.assert_called_once()
