@@ -1,9 +1,9 @@
 {
-  "delivery_count": 12,
+  "delivery_count": 14,
   "delivery_day_kst": "2026-09-08",
   "delivery_source_counts": {
     "claude_code": 4,
-    "codex": 1,
+    "codex": 3,
     "convai": 2,
     "eighty_level": 2,
     "geeknews": 2,
@@ -11,7 +11,7 @@
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-08T05:14:56.025966+00:00",
+    "last_poll_at": "2026-09-08T08:21:26.607555+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -298,13 +298,51 @@
         "up": 0,
         "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.257",
         "window_hours": 48.0
+      },
+      "-1004468125637:41": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 41,
+        "published_at": "2026-09-04T19:01:32+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-08T08:22:19+00:00",
+        "source_id": "codex",
+        "title": "Codex rust-v0.153.3 — Added GPT-6-Astra to the Amazon Bedrock model picker for Mantle and Runtime global/US routes.",
+        "up": 0,
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.153.3",
+        "window_hours": 48.0
+      },
+      "-1004468125637:42": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 42,
+        "published_at": "2026-09-03T21:02:56+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-08T08:22:21+00:00",
+        "source_id": "codex",
+        "title": "Codex rust-v0.153.1 — Added support for configuring GPT-6-Astra through the API without changing the default model or showing it in the model picker.",
+        "up": 0,
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.153.1",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-05T04:43:20.477807+00:00",
-  "last_success_at": "2026-09-08T05:16:51.238635+00:00",
+  "last_success_at": "2026-09-08T08:22:22.877010+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
@@ -318,6 +356,10 @@
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.261": "2026-09-08T02:14:14.538785+00:00",
     "https://github.com/invoke-ai/InvokeAI/releases/tag/v6.14.1": "2026-09-08T02:14:12.830758+00:00",
     "https://github.com/openai/codex/releases/tag/rust-v0.153.0": "2026-09-08T02:14:17.958330+00:00",
+    "https://github.com/openai/codex/releases/tag/rust-v0.153.1": "2026-09-08T08:22:22.877010+00:00",
+    "https://github.com/openai/codex/releases/tag/rust-v0.153.2": "2026-09-08T08:22:22.877010+00:00",
+    "https://github.com/openai/codex/releases/tag/rust-v0.153.3": "2026-09-08T08:22:21.021941+00:00",
+    "https://github.com/openai/codex/releases/tag/rust-v0.153.4": "2026-09-08T08:22:21.021941+00:00",
     "https://news.hada.io/topic?id=33245": "2026-09-06T01:05:41.038002+00:00",
     "https://news.hada.io/topic?id=33247": "2026-09-05T17:11:50.699580+00:00",
     "https://news.hada.io/topic?id=33273": "2026-09-06T15:50:48.989157+00:00",
