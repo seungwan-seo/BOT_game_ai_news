@@ -1,17 +1,19 @@
 {
-  "delivery_count": 14,
+  "delivery_count": 16,
   "delivery_day_kst": "2026-09-08",
   "delivery_source_counts": {
     "claude_code": 4,
     "codex": 3,
     "convai": 2,
+    "cursor": 1,
     "eighty_level": 2,
     "geeknews": 2,
-    "invokeai": 1
+    "invokeai": 1,
+    "meshy": 1
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-08T08:21:26.607555+00:00",
+    "last_poll_at": "2026-09-08T09:52:39.255391+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -336,19 +338,58 @@
         "up": 0,
         "url": "https://github.com/openai/codex/releases/tag/rust-v0.153.1",
         "window_hours": 48.0
+      },
+      "-1004468125637:43": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 43,
+        "published_at": "2026-09-02T00:00:00+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-08T09:53:26+00:00",
+        "source_id": "cursor",
+        "title": "Self-hosted machines",
+        "up": 0,
+        "url": "https://cursor.com/changelog/self-hosted-machines",
+        "window_hours": 48.0
+      },
+      "-1004468125637:44": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 44,
+        "published_at": "2026-08-17T00:00:00+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-08T09:53:29+00:00",
+        "source_id": "meshy",
+        "title": "Bringing History to Life: How Moesgaard Museum Transforms Cultural Storytelling with Meshy",
+        "up": 0,
+        "url": "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-05T04:43:20.477807+00:00",
-  "last_success_at": "2026-09-08T08:22:22.877010+00:00",
+  "last_success_at": "2026-09-08T09:53:30.532071+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
     "https://80.lv/articles/interview-new-indie-game-uses-local-ai-model-trained-entirely-on-studio-s-own-artists": "2026-09-08T02:14:03.369902+00:00",
     "https://convai.com/blog/interactive-ai-characters-unity-convai-actions": "2026-09-08T02:14:11.124357+00:00",
     "https://convai.com/blog/mixed-reality-ai-characters-unity-6-meta-quest-convai-xr-tutorial": "2026-09-08T02:14:20.247559+00:00",
+    "https://cursor.com/changelog/self-hosted-machines": "2026-09-08T09:53:27.535010+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.257": "2026-09-08T05:16:51.238635+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.258": "2026-09-08T05:16:51.238635+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.259": "2026-09-08T05:16:48.996408+00:00",
@@ -367,7 +408,8 @@
     "https://news.hada.io/topic?id=33311": "2026-09-08T02:14:05.090172+00:00",
     "https://news.hada.io/topic?id=33344": "2026-09-08T02:14:08.562277+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
-    "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00"
+    "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
+    "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling": "2026-09-08T09:53:30.532071+00:00"
   },
   "version": 1
 }
