@@ -1,15 +1,15 @@
 {
-  "delivery_count": 10,
+  "delivery_count": 12,
   "delivery_day_kst": "2026-09-09",
   "delivery_source_counts": {
     "arxiv_game_ai": 2,
     "claude_code": 1,
-    "geeknews": 6,
+    "geeknews": 8,
     "nvidia_developer": 1
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-09T08:24:32.133101+00:00",
+    "last_poll_at": "2026-09-09T09:55:28.948380+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -562,13 +562,51 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33410",
         "window_hours": 48.0
+      },
+      "-1004468125637:55": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 55,
+        "published_at": "2026-09-09T08:36:25+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-09T09:56:14+00:00",
+        "source_id": "geeknews",
+        "title": "나비에–스토크스 밀레니엄 상금 문제",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33429",
+        "window_hours": 48.0
+      },
+      "-1004468125637:56": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 56,
+        "published_at": "2026-09-09T03:00:03+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-09T09:56:16+00:00",
+        "source_id": "geeknews",
+        "title": "GPT-6 Astra를 위한 스킬과 프롬프트 다시 생각하기",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33404",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-05T04:43:20.477807+00:00",
-  "last_success_at": "2026-09-09T08:25:23.561753+00:00",
+  "last_success_at": "2026-09-09T09:56:18.115991+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
@@ -602,8 +640,10 @@
     "https://news.hada.io/topic?id=33361": "2026-09-09T00:14:45.331152+00:00",
     "https://news.hada.io/topic?id=33377": "2026-09-09T05:18:36.296048+00:00",
     "https://news.hada.io/topic?id=33396": "2026-09-09T05:18:32.602393+00:00",
+    "https://news.hada.io/topic?id=33404": "2026-09-09T09:56:18.115991+00:00",
     "https://news.hada.io/topic?id=33410": "2026-09-09T08:25:23.561753+00:00",
     "https://news.hada.io/topic?id=33411": "2026-09-09T08:25:21.744796+00:00",
+    "https://news.hada.io/topic?id=33429": "2026-09-09T09:56:16.203020+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
     "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling": "2026-09-08T09:53:30.532071+00:00"
