@@ -1,16 +1,16 @@
 {
-  "delivery_count": 6,
+  "delivery_count": 8,
   "delivery_day_kst": "2026-09-10",
   "delivery_source_counts": {
     "ai_and_games": 1,
     "claude_code": 1,
     "codex": 1,
-    "geeknews": 2,
+    "geeknews": 4,
     "meshy": 1
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-10T00:13:50.064382+00:00",
+    "last_poll_at": "2026-09-10T05:18:03.638506+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -715,13 +715,51 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33449",
         "window_hours": 48.0
+      },
+      "-1004468125637:63": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 63,
+        "published_at": "2026-09-10T00:30:03+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-10T05:18:50+00:00",
+        "source_id": "geeknews",
+        "title": "Proliferate - 여러 코딩 에이전트를 병렬로 실행하는 오픈소스 AI IDE",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33463",
+        "window_hours": 48.0
+      },
+      "-1004468125637:64": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 64,
+        "published_at": "2026-09-10T00:20:02+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-10T05:18:52+00:00",
+        "source_id": "geeknews",
+        "title": "Addy Osmani, Google 떠나 Anthropic 합류",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33462",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
-  "last_promo_at": "2026-09-05T04:43:20.477807+00:00",
-  "last_success_at": "2026-09-10T00:14:55.308407+00:00",
+  "last_promo_at": "2026-09-10T05:18:03.638506+00:00",
+  "last_success_at": "2026-09-10T05:18:53.801546+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
@@ -763,6 +801,8 @@
     "https://news.hada.io/topic?id=33429": "2026-09-09T09:56:16.203020+00:00",
     "https://news.hada.io/topic?id=33446": "2026-09-10T00:14:50.308413+00:00",
     "https://news.hada.io/topic?id=33449": "2026-09-10T00:14:55.308407+00:00",
+    "https://news.hada.io/topic?id=33462": "2026-09-10T05:18:53.801546+00:00",
+    "https://news.hada.io/topic?id=33463": "2026-09-10T05:18:52.053608+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
