@@ -1,16 +1,16 @@
 {
-  "delivery_count": 8,
+  "delivery_count": 9,
   "delivery_day_kst": "2026-09-10",
   "delivery_source_counts": {
     "ai_and_games": 1,
     "claude_code": 1,
     "codex": 1,
     "geeknews": 4,
-    "meshy": 1
+    "meshy": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-10T05:18:03.638506+00:00",
+    "last_poll_at": "2026-09-10T08:26:06.158557+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -753,13 +753,32 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33462",
         "window_hours": 48.0
+      },
+      "-1004468125637:66": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 66,
+        "published_at": "2026-09-10T00:00:00+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-10T08:26:58+00:00",
+        "source_id": "meshy",
+        "title": "Meshy 7.1: Attention to the Closest Detail",
+        "up": 0,
+        "url": "https://www.meshy.ai/blog/meshy-7-1-launch",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-10T05:18:03.638506+00:00",
-  "last_success_at": "2026-09-10T05:18:53.801546+00:00",
+  "last_success_at": "2026-09-10T08:27:00.161028+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
@@ -807,6 +826,7 @@
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
     "https://www.meshy.ai/blog/ai-agent-game-asset-pipeline": "2026-09-10T00:14:51.959512+00:00",
+    "https://www.meshy.ai/blog/meshy-7-1-launch": "2026-09-10T08:27:00.161028+00:00",
     "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling": "2026-09-08T09:53:30.532071+00:00"
   },
   "version": 1
