@@ -1,14 +1,14 @@
 {
-  "delivery_count": 6,
+  "delivery_count": 7,
   "delivery_day_kst": "2026-09-11",
   "delivery_source_counts": {
     "claude_code": 1,
     "codex": 1,
-    "geeknews": 4
+    "geeknews": 5
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-11T04:41:12.575943+00:00",
+    "last_poll_at": "2026-09-11T08:20:20.040944+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -903,13 +903,32 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33516",
         "window_hours": 48.0
+      },
+      "-1004468125637:74": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 74,
+        "published_at": "2026-09-11T01:23:08+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-11T08:21:04+00:00",
+        "source_id": "geeknews",
+        "title": "OpenAI, 동시 청취·발화가 가능한 GPT‑Live‑1 API 출시",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33512",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-10T05:18:03.638506+00:00",
-  "last_success_at": "2026-09-11T04:41:59.124873+00:00",
+  "last_success_at": "2026-09-11T08:21:06.014176+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/how-tripo-is-tackling-clean-topology-for-its-3d-asset-pipeline": "2026-09-08T02:14:06.838786+00:00",
@@ -958,6 +977,7 @@
     "https://news.hada.io/topic?id=33477": "2026-09-10T09:53:43.592991+00:00",
     "https://news.hada.io/topic?id=33485": "2026-09-11T00:10:34.142764+00:00",
     "https://news.hada.io/topic?id=33494": "2026-09-11T00:10:29.053416+00:00",
+    "https://news.hada.io/topic?id=33512": "2026-09-11T08:21:06.014176+00:00",
     "https://news.hada.io/topic?id=33516": "2026-09-11T04:41:59.124873+00:00",
     "https://news.hada.io/topic?id=33517": "2026-09-11T04:41:57.435855+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
