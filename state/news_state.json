@@ -1,14 +1,12 @@
 {
-  "delivery_count": 4,
-  "delivery_day_kst": "2026-09-12",
+  "delivery_count": 2,
+  "delivery_day_kst": "2026-09-13",
   "delivery_source_counts": {
-    "claude_code": 1,
-    "eighty_level": 1,
     "geeknews": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-12T14:14:28.933146+00:00",
+    "last_poll_at": "2026-09-12T23:59:18.356640+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -1017,13 +1015,51 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33547",
         "window_hours": 48.0
+      },
+      "-1004468125637:80": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 80,
+        "published_at": "2026-09-12T14:35:47+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-13T00:00:26+00:00",
+        "source_id": "geeknews",
+        "title": "Apple Neural Engine 역공학 하기: LLM의 병목은 연산보다 데이터 이동",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33583",
+        "window_hours": 48.0
+      },
+      "-1004468125637:81": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 81,
+        "published_at": "2026-09-12T13:33:21+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-13T00:00:27+00:00",
+        "source_id": "geeknews",
+        "title": "젠장, 그래도 만들자",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33582",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-10T05:18:03.638506+00:00",
-  "last_success_at": "2026-09-12T00:18:52.235463+00:00",
+  "last_success_at": "2026-09-13T00:00:29.002043+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1080,6 +1116,8 @@
     "https://news.hada.io/topic?id=33524": "2026-09-11T09:52:48.855072+00:00",
     "https://news.hada.io/topic?id=33542": "2026-09-12T00:18:50.394793+00:00",
     "https://news.hada.io/topic?id=33547": "2026-09-12T00:18:52.235463+00:00",
+    "https://news.hada.io/topic?id=33582": "2026-09-13T00:00:29.002043+00:00",
+    "https://news.hada.io/topic?id=33583": "2026-09-13T00:00:27.392893+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
