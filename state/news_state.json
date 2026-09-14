@@ -1,12 +1,12 @@
 {
-  "delivery_count": 4,
-  "delivery_day_kst": "2026-09-13",
+  "delivery_count": 2,
+  "delivery_day_kst": "2026-09-14",
   "delivery_source_counts": {
-    "geeknews": 4
+    "geeknews": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-13T14:57:18.895347+00:00",
+    "last_poll_at": "2026-09-14T00:10:43.743469+00:00",
     "next_update_id": 637924633,
     "posts": {
       "-1004468125637:26": {
@@ -1091,13 +1091,51 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33604",
         "window_hours": 48.0
+      },
+      "-1004468125637:84": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 84,
+        "published_at": "2026-09-13T13:38:51+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-14T00:11:43+00:00",
+        "source_id": "geeknews",
+        "title": "Show GN: 스테인드글래스 완성하는 퍼즐 게임 - The Artisan of Glimmith 클론",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33624",
+        "window_hours": 48.0
+      },
+      "-1004468125637:85": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 85,
+        "published_at": "2026-09-13T21:36:17+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-14T00:11:45+00:00",
+        "source_id": "geeknews",
+        "title": "바이브 코딩으로 만든 대시보드가 형편없어 보이는 10가지 이유",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33651",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-10T05:18:03.638506+00:00",
-  "last_success_at": "2026-09-13T04:46:43.307154+00:00",
+  "last_success_at": "2026-09-14T00:11:46.369529+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1158,6 +1196,8 @@
     "https://news.hada.io/topic?id=33583": "2026-09-13T00:00:27.392893+00:00",
     "https://news.hada.io/topic?id=33604": "2026-09-13T04:46:43.307154+00:00",
     "https://news.hada.io/topic?id=33609": "2026-09-13T04:46:41.662886+00:00",
+    "https://news.hada.io/topic?id=33624": "2026-09-14T00:11:44.714225+00:00",
+    "https://news.hada.io/topic?id=33651": "2026-09-14T00:11:46.369529+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
