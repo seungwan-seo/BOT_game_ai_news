@@ -5,9 +5,9 @@
     "geeknews": 2
   },
   "feedback": {
-    "last_batch_size": 0,
-    "last_poll_at": "2026-09-14T00:10:43.743469+00:00",
-    "next_update_id": 637924633,
+    "last_batch_size": 1,
+    "last_poll_at": "2026-09-14T04:58:53.110518+00:00",
+    "next_update_id": 637924634,
     "posts": {
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
@@ -1115,18 +1115,18 @@
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
         "down": 0,
-        "learning_date": 0,
+        "learning_date": 1789355036,
         "learning_down": 0,
-        "learning_up": 0,
-        "learning_update_id": -1,
+        "learning_up": 1,
+        "learning_update_id": 637924633,
         "message_id": 85,
         "published_at": "2026-09-13T21:36:17+00:00",
-        "reaction_date": 0,
-        "reaction_update_id": -1,
+        "reaction_date": 1789355036,
+        "reaction_update_id": 637924633,
         "sent_at": "2026-09-14T00:11:45+00:00",
         "source_id": "geeknews",
         "title": "바이브 코딩으로 만든 대시보드가 형편없어 보이는 10가지 이유",
-        "up": 0,
+        "up": 1,
         "url": "https://news.hada.io/topic?id=33651",
         "window_hours": 48.0
       }
