@@ -1,14 +1,14 @@
 {
-  "delivery_count": 4,
+  "delivery_count": 5,
   "delivery_day_kst": "2026-09-15",
   "delivery_source_counts": {
     "ai_and_games": 1,
     "claude_code": 1,
-    "geeknews": 2
+    "geeknews": 3
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-15T00:37:15.142651+00:00",
+    "last_poll_at": "2026-09-15T05:22:50.612454+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:26": {
@@ -1207,13 +1207,32 @@
         "up": 0,
         "url": "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer",
         "window_hours": 48.0
+      },
+      "-1004468125637:90": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 90,
+        "published_at": "2026-09-15T04:50:57+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-15T05:24:02+00:00",
+        "source_id": "geeknews",
+        "title": "GPT-5.6 Luna vs. GPT-6 Astra: 1.20달러 모델로 코드 리뷰를 해도 충분할까?",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33724",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
-  "last_promo_at": "2026-09-10T05:18:03.638506+00:00",
-  "last_success_at": "2026-09-15T00:38:35.623048+00:00",
+  "last_promo_at": "2026-09-15T05:22:50.612454+00:00",
+  "last_success_at": "2026-09-15T05:24:03.445058+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1279,6 +1298,7 @@
     "https://news.hada.io/topic?id=33651": "2026-09-14T00:11:46.369529+00:00",
     "https://news.hada.io/topic?id=33697": "2026-09-15T00:38:30.496959+00:00",
     "https://news.hada.io/topic?id=33700": "2026-09-15T00:38:28.716743+00:00",
+    "https://news.hada.io/topic?id=33724": "2026-09-15T05:24:03.445058+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
