@@ -1,14 +1,13 @@
 {
-  "delivery_count": 5,
-  "delivery_day_kst": "2026-09-15",
+  "delivery_count": 2,
+  "delivery_day_kst": "2026-09-16",
   "delivery_source_counts": {
-    "ai_and_games": 1,
     "claude_code": 1,
-    "geeknews": 3
+    "geeknews": 1
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-15T15:36:59.210772+00:00",
+    "last_poll_at": "2026-09-16T00:18:16.960025+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:26": {
@@ -1226,13 +1225,51 @@
         "up": 0,
         "url": "https://news.hada.io/topic?id=33724",
         "window_hours": 48.0
+      },
+      "-1004468125637:92": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 92,
+        "published_at": "2026-09-15T21:33:27+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-16T00:19:04+00:00",
+        "source_id": "geeknews",
+        "title": "Google, 대화하며 추론하는 Gemini 3.8 Live와 Extended Thinking 출시",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33755",
+        "window_hours": 48.0
+      },
+      "-1004468125637:93": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 93,
+        "published_at": "2026-09-15T20:23:03+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-16T00:19:05+00:00",
+        "source_id": "claude_code",
+        "title": "Claude Code v2.1.273 — Added x-claude-code-request-class, x-claude-code-agent-type, x-claude-code-prev-tool-durations, x-claude-code-compaction and…",
+        "up": 0,
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.273",
+        "window_hours": 48.0
       }
     },
     "started_at": "2026-09-05T18:02:45.376243+00:00",
     "window_hours": 48
   },
   "last_promo_at": "2026-09-15T05:22:50.612454+00:00",
-  "last_success_at": "2026-09-15T05:24:03.445058+00:00",
+  "last_success_at": "2026-09-16T00:19:07.124333+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1255,6 +1292,7 @@
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.268": "2026-09-11T00:10:30.752941+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.269": "2026-09-12T00:18:48.656692+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.271": "2026-09-15T00:38:32.290300+00:00",
+    "https://github.com/anthropics/claude-code/releases/tag/v2.1.273": "2026-09-16T00:19:07.124333+00:00",
     "https://github.com/invoke-ai/InvokeAI/releases/tag/v6.14.1": "2026-09-08T02:14:12.830758+00:00",
     "https://github.com/openai/codex/releases/tag/python-v0.154.0": "2026-09-11T00:10:32.440184+00:00",
     "https://github.com/openai/codex/releases/tag/rust-v0.153.0": "2026-09-08T02:14:17.958330+00:00",
@@ -1299,6 +1337,7 @@
     "https://news.hada.io/topic?id=33697": "2026-09-15T00:38:30.496959+00:00",
     "https://news.hada.io/topic?id=33700": "2026-09-15T00:38:28.716743+00:00",
     "https://news.hada.io/topic?id=33724": "2026-09-15T05:24:03.445058+00:00",
+    "https://news.hada.io/topic?id=33755": "2026-09-16T00:19:05.316068+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
