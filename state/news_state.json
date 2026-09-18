@@ -1,14 +1,14 @@
 {
-  "delivery_count": 4,
+  "delivery_count": 6,
   "delivery_day_kst": "2026-09-18",
   "delivery_source_counts": {
     "claude_code": 1,
     "codex": 1,
-    "geeknews": 2
+    "geeknews": 4
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-18T00:16:31.754729+00:00",
+    "last_poll_at": "2026-09-18T05:12:49.846338+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -104,6 +104,44 @@
         "title": "security-audit - 코딩 에이전트를 보안 감사자로 바꿔주는 스킬",
         "up": 0,
         "url": "https://news.hada.io/topic?id=33852",
+        "window_hours": 48.0
+      },
+      "-1004468125637:105": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 105,
+        "published_at": "2026-09-17T16:54:42+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-18T05:13:33+00:00",
+        "source_id": "geeknews",
+        "title": "Show GN: JD 기반 자기소개서 첨삭 Codex Skill",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33851",
+        "window_hours": 48.0
+      },
+      "-1004468125637:106": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 106,
+        "published_at": "2026-09-17T13:42:15+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-18T05:13:35+00:00",
+        "source_id": "geeknews",
+        "title": "OpenSpec - 코딩 에이전트와 구현 전에 명세를 맞추는 개발 도구",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33841",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -1479,7 +1517,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-15T05:22:50.612454+00:00",
-  "last_success_at": "2026-09-18T00:17:27.435130+00:00",
+  "last_success_at": "2026-09-18T05:13:37.077770+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1556,7 +1594,9 @@
     "https://news.hada.io/topic?id=33804": "2026-09-17T00:31:23.518995+00:00",
     "https://news.hada.io/topic?id=33813": "2026-09-17T00:31:25.142257+00:00",
     "https://news.hada.io/topic?id=33818": "2026-09-17T05:25:16.569589+00:00",
+    "https://news.hada.io/topic?id=33841": "2026-09-18T05:13:37.077770+00:00",
     "https://news.hada.io/topic?id=33842": "2026-09-18T00:17:22.371942+00:00",
+    "https://news.hada.io/topic?id=33851": "2026-09-18T05:13:35.275867+00:00",
     "https://news.hada.io/topic?id=33852": "2026-09-18T00:17:27.435130+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
