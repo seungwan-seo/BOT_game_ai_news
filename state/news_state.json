@@ -1,13 +1,13 @@
 {
-  "delivery_count": 5,
+  "delivery_count": 6,
   "delivery_day_kst": "2026-09-19",
   "delivery_source_counts": {
     "claude_code": 1,
-    "geeknews": 4
+    "geeknews": 5
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-19T05:04:45.640768+00:00",
+    "last_poll_at": "2026-09-19T08:18:33.089329+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -255,6 +255,25 @@
         "title": "GLM 코딩 에이전트 ZCode, 사용자 모르게 Git 이력을 업로드함",
         "up": 0,
         "url": "https://news.hada.io/topic?id=33897",
+        "window_hours": 48.0
+      },
+      "-1004468125637:113": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 113,
+        "published_at": "2026-09-18T14:52:17+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-19T08:19:17+00:00",
+        "source_id": "geeknews",
+        "title": "Bend 2와 바이브 코딩의 함정",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=33896",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -1630,7 +1649,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-15T05:22:50.612454+00:00",
-  "last_success_at": "2026-09-19T05:05:32.818941+00:00",
+  "last_success_at": "2026-09-19T08:19:19.225765+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1713,6 +1732,7 @@
     "https://news.hada.io/topic?id=33851": "2026-09-18T05:13:35.275867+00:00",
     "https://news.hada.io/topic?id=33852": "2026-09-18T00:17:27.435130+00:00",
     "https://news.hada.io/topic?id=33880": "2026-09-18T08:32:12.984875+00:00",
+    "https://news.hada.io/topic?id=33896": "2026-09-19T08:19:19.225765+00:00",
     "https://news.hada.io/topic?id=33897": "2026-09-19T05:05:32.818941+00:00",
     "https://news.hada.io/topic?id=33902": "2026-09-19T00:20:35.162840+00:00",
     "https://news.hada.io/topic?id=33905": "2026-09-19T00:20:31.924909+00:00",
