@@ -4,14 +4,9 @@ import html
 
 
 def build_channel_guide_post(config: dict) -> str:
-    steam_channel_url = html.escape(
-        str(config.get("steam_channel_url", "")).strip(), quote=True
-    )
     turtle_url = html.escape(
         str(config.get("turtle_url", "")).strip(), quote=True
     )
-    if not steam_channel_url.startswith("https://t.me/"):
-        raise ValueError("채널 안내의 Steam 자매 채널 URL이 올바르지 않습니다.")
     if not turtle_url.startswith("https://store.steampowered.com/"):
         raise ValueError("채널 안내의 Turtle Game URL이 올바르지 않습니다.")
 
@@ -20,9 +15,6 @@ def build_channel_guide_post(config: dict) -> str:
         "게임 개발에 직접 활용할 수 있는 AI·NPC·에이전트·생성 기술 소식을 "
         "한국어로 정리합니다.\n"
         "하루 최대 10개, 아침부터 저녁까지 간격을 두고 발행합니다.\n\n"
-        "<b>🤝 함께 운영하는 채널</b>\n"
-        f'<b><a href="{steam_channel_url}">🎁 Steam Deals · Free Games</a></b>\n'
-        "무료 배포, 높은 할인율과 숨은 인디 게임을 선별하는 글로벌 영문 채널입니다.\n\n"
         "<b>🐢 운영자가 만든 Steam 게임</b>\n"
         f'<b><a href="{turtle_url}">거북이 게임</a></b>\n'
         "어릴 때 하던 물속 링 끼우기 장난감을 바람과 물리 기반 PC 게임으로 만들었습니다.\n"

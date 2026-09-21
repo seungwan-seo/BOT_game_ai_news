@@ -47,19 +47,14 @@ feedback:
 
 # 공지 고정용 채널 안내. 가격·리뷰처럼 변하는 수치는 넣지 않는다.
 channel_guide:
-  steam_channel_url: "https://t.me/steam_deals_free"
   turtle_url: "https://store.steampowered.com/app/3952050/Turtle_Game/"
   image_url: "https://cdn.akamai.steamstatic.com/steam/apps/3952050/header.jpg"
 
-# 정상 뉴스가 게시되는 날 중 마지막 홍보 후 지정 일수가 지났을 때 1건을 덧붙인다.
-# 채널이 늘어나면 channels에 추가하며 promotion_cursor 순서로 하나씩 순환한다.
+# 자매 채널 홍보 중단 (2026-09-21). 예약·수동 발송 모두 비활성화한다.
 promotion:
-  enabled: true
+  enabled: false
   interval_days: 5
-  channels:
-    - name: "🎁 Steam Deals · Free Games"
-      url: "https://t.me/steam_deals_free"
-      description: "무료 배포, 높은 할인율, 신작과 숨은 인디 게임을 자동으로 선별하는 글로벌 영문 채널입니다."
+  channels: []
 
 # trusted=true는 해당 사이트 전체가 게임 AI 전용이라는 뜻이다.
 # 일반 기술/게임 피드는 관련성 점수가 min_relevance 이상인 글만 남긴다.

@@ -95,15 +95,12 @@ GEMINI_MODEL=gemini-2.5-flash
 
 제목·발췌 번역은 [`config.yaml`](config.yaml)의 `translation.enabled`로 끌 수 있다. 꺼도 영문 자동 발행을 허용하지 않으며 이미 한국어인 글이나 Gemini가 한국어로 완성한 글만 발행한다. 번역 대상은 공개된 기사 제목과 요약에 쓸 짧은 공개 발췌뿐이며 기사 본문 전체나 Telegram 정보는 번역 서비스로 보내지 않는다.
 
-## 자매 채널 교차 홍보
+## 채널 안내와 미리보기
 
-정상 뉴스가 올라오는 날을 기준으로 5일에 한 번 `@steam_deals_free`를 별도 게시물로 소개한다. 뉴스가 없는 날에는 광고만 단독으로 올리지 않는다. 홍보 성공 시각과 다음 채널 순번은 `state/news_state.json`에 기록하므로 재실행해도 중복되지 않는다.
+2026-09-21부터 Steam 자매 채널 홍보를 중단했다. [`config.yaml`](config.yaml)의 `promotion.enabled`는 `false`이며 홍보 채널 목록은 비어 있다. 예약 실행과 `--send-promo-now` 모두 홍보를 보내지 않고, GitHub Actions의 수동 홍보 입력도 제거했다.
 
-향후 채널이 늘어나면 [`config.yaml`](config.yaml)의 `promotion.channels`에 이름·링크·설명을 추가한다. 봇은 목록을 순환하므로 특정 채널만 반복 노출되지 않는다.
-
-GitHub Actions의 `Run workflow`에서 `다음 자매 채널 홍보만 즉시 발송`을 체크하면 뉴스 수집 없이 홍보 1건만 바로 보낼 수 있다.
-`콘솔 미리보기만 출력`을 체크하면 텔레그램에 보내지 않고 Actions 로그에서 내용을 확인한다. `긱뉴스 피드의 특정 기사 URL 1건 게시`에 피드에 있는 주소를 입력하면 정상 운영용 기사 1건만 무음으로 게시하고 읽음 기록·하루 한도에 반영한다. 이미 보낸 기사, 부적합한 기사, 한도를 초과한 기사는 보내지 않으며 광고도 함께 보내지 않는다.
-`고정용 채널 안내를 상태 변경 없이 즉시 발송`은 채널 소개, 자매 채널, 운영자의 Turtle Game을 한 게시물로 조용히 전송한다. 가격·리뷰 수치를 넣지 않은 공지용 문구라 발송 후 Telegram에서 고정해 두면 된다.
+GitHub Actions의 `Run workflow`에서 `콘솔 미리보기만 출력`을 체크하면 텔레그램에 보내지 않고 Actions 로그에서 내용을 확인한다. `긱뉴스 피드의 특정 기사 URL 1건 게시`에 피드에 있는 주소를 입력하면 정상 운영용 기사 1건만 무음으로 게시하고 읽음 기록·하루 한도에 반영한다. 이미 보낸 기사, 부적합한 기사, 한도를 초과한 기사는 보내지 않는다.
+`고정용 채널 안내를 상태 변경 없이 즉시 발송`은 채널 소개와 운영자의 Turtle Game을 한 게시물로 조용히 전송한다. 가격·리뷰 수치를 넣지 않은 공지용 문구라 발송 후 Telegram에서 고정해 두면 된다. 안내문에서도 자매 채널 소개를 제거했으며, 이미 게시된 Telegram 메시지는 이 변경으로 수정되거나 삭제되지 않는다.
 
 ## 구독자 반응 분석
 
@@ -193,7 +190,6 @@ python main.py --dry-run --show-all  # 이미 본 기사도 포함
 python main.py --source geeknews --dry-run --no-promo --limit 2
 # 아래 명령은 실제 발송: 사용자가 요청한 운영 게시에만 사용
 python main.py --source geeknews --article-url "https://news.hada.io/topic?id=기사번호" --no-promo
-python main.py --send-promo-now          # 다음 자매 채널 홍보를 즉시 발송
 python main.py --send-channel-guide      # 고정용 채널 안내를 무음으로 즉시 발송
 python main.py --bootstrap           # 현재 기사 기준점 생성
 python main.py --no-ai               # 외부 AI 없이 실행
