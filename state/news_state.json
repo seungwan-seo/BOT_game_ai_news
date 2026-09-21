@@ -1,13 +1,13 @@
 {
-  "delivery_count": 3,
+  "delivery_count": 5,
   "delivery_day_kst": "2026-09-21",
   "delivery_source_counts": {
     "comfy": 1,
-    "geeknews": 2
+    "geeknews": 4
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-21T00:15:40.533954+00:00",
+    "last_poll_at": "2026-09-21T05:29:41.079535+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -388,6 +388,44 @@
         "title": "Qwen-Image-2.1 in ComfyUI: Open-Weight Image Generation and Editing, Now with Transparency",
         "up": 0,
         "url": "https://blog.comfy.org/p/qwen-image-21-in-comfyui-open-weight",
+        "window_hours": 48.0
+      },
+      "-1004468125637:121": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 121,
+        "published_at": "2026-09-20T19:11:12+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-21T05:30:27+00:00",
+        "source_id": "geeknews",
+        "title": "Ask GN: 3주간 코딩 에이전트에게 보낸 제 메시지를 분석해 봤습니다. 40%는 실제 작업이 아니었어요. 다른 분들...",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34012",
+        "window_hours": 48.0
+      },
+      "-1004468125637:122": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 122,
+        "published_at": "2026-09-21T00:52:43+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-21T05:30:28+00:00",
+        "source_id": "geeknews",
+        "title": "Claude Code 개발자 보리스 처니: \"나는 자주 틀린다\"",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34034",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -1763,7 +1801,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-21T00:16:33.823206+00:00",
+  "last_success_at": "2026-09-21T05:30:30.109980+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1856,7 +1894,9 @@
     "https://news.hada.io/topic?id=33971": "2026-09-20T08:51:20.990891+00:00",
     "https://news.hada.io/topic?id=33975": "2026-09-20T04:53:25.448290+00:00",
     "https://news.hada.io/topic?id=34002": "2026-09-21T00:16:29.317234+00:00",
+    "https://news.hada.io/topic?id=34012": "2026-09-21T05:30:28.415775+00:00",
     "https://news.hada.io/topic?id=34014": "2026-09-21T00:16:31.051693+00:00",
+    "https://news.hada.io/topic?id=34034": "2026-09-21T05:30:30.109980+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
