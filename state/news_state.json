@@ -1,13 +1,13 @@
 {
-  "delivery_count": 6,
+  "delivery_count": 8,
   "delivery_day_kst": "2026-09-22",
   "delivery_source_counts": {
     "arxiv_game_ai": 2,
-    "geeknews": 4
+    "geeknews": 6
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-22T06:12:19.442596+00:00",
+    "last_poll_at": "2026-09-22T08:49:40.695840+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -578,6 +578,44 @@
         "title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
         "up": 0,
         "url": "https://arxiv.org/abs/2609.25001v1",
+        "window_hours": 48.0
+      },
+      "-1004468125637:131": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 131,
+        "published_at": "2026-09-21T21:35:10+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-22T08:50:26+00:00",
+        "source_id": "geeknews",
+        "title": "샤오미, MiMo-V2.6 공개 - 강화학습 과정을 공개한 멀티모달 모델",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34085",
+        "window_hours": 48.0
+      },
+      "-1004468125637:132": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 132,
+        "published_at": "2026-09-21T17:49:35+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-22T08:50:28+00:00",
+        "source_id": "geeknews",
+        "title": "Grok 4.7 공개, 동급 모델 대비 2배 빠르고 가격은 절반",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34077",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -1953,7 +1991,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-22T06:13:19.201891+00:00",
+  "last_success_at": "2026-09-22T08:50:29.370025+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -2053,7 +2091,9 @@
     "https://news.hada.io/topic?id=34014": "2026-09-21T00:16:31.051693+00:00",
     "https://news.hada.io/topic?id=34017": "2026-09-21T09:20:08.670887+00:00",
     "https://news.hada.io/topic?id=34034": "2026-09-21T05:30:30.109980+00:00",
+    "https://news.hada.io/topic?id=34077": "2026-09-22T08:50:29.370025+00:00",
     "https://news.hada.io/topic?id=34081": "2026-09-22T00:50:04.683431+00:00",
+    "https://news.hada.io/topic?id=34085": "2026-09-22T08:50:27.552274+00:00",
     "https://news.hada.io/topic?id=34089": "2026-09-22T00:50:06.464267+00:00",
     "https://news.hada.io/topic?id=34093": "2026-09-22T06:13:17.463425+00:00",
     "https://news.hada.io/topic?id=34105": "2026-09-22T06:13:15.738438+00:00",
