@@ -1,13 +1,12 @@
 {
-  "delivery_count": 7,
-  "delivery_day_kst": "2026-09-21",
+  "delivery_count": 2,
+  "delivery_day_kst": "2026-09-22",
   "delivery_source_counts": {
-    "comfy": 1,
-    "geeknews": 6
+    "geeknews": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-21T17:07:25.923339+00:00",
+    "last_poll_at": "2026-09-22T00:49:15.950022+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -464,6 +463,44 @@
         "title": "Qwen-Image-2.1 공개, 이미지 생성부터 투명 배경 편집까지",
         "up": 0,
         "url": "https://news.hada.io/topic?id=34004",
+        "window_hours": 48.0
+      },
+      "-1004468125637:125": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 125,
+        "published_at": "2026-09-21T18:34:05+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-22T00:50:03+00:00",
+        "source_id": "geeknews",
+        "title": "Fable 5, 높은 추론 설정에도 실제 추론량이 줄었다는 분석",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34081",
+        "window_hours": 48.0
+      },
+      "-1004468125637:126": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 126,
+        "published_at": "2026-09-22T00:20:02+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-22T00:50:05+00:00",
+        "source_id": "geeknews",
+        "title": "카카오, 독립형 AI 서비스 ‘카나나’ 종료",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34089",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -1839,7 +1876,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-21T09:20:10.333898+00:00",
+  "last_success_at": "2026-09-22T00:50:06.464267+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -1937,6 +1974,8 @@
     "https://news.hada.io/topic?id=34014": "2026-09-21T00:16:31.051693+00:00",
     "https://news.hada.io/topic?id=34017": "2026-09-21T09:20:08.670887+00:00",
     "https://news.hada.io/topic?id=34034": "2026-09-21T05:30:30.109980+00:00",
+    "https://news.hada.io/topic?id=34081": "2026-09-22T00:50:04.683431+00:00",
+    "https://news.hada.io/topic?id=34089": "2026-09-22T00:50:06.464267+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
