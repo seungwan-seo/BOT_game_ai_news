@@ -1,16 +1,17 @@
 {
-  "delivery_count": 10,
+  "delivery_count": 12,
   "delivery_day_kst": "2026-09-23",
   "delivery_source_counts": {
     "claude_code": 1,
     "codex": 2,
     "comfy": 1,
     "convai": 3,
-    "geeknews": 3
+    "geeknews": 4,
+    "meshy": 1
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-23T05:11:14.863125+00:00",
+    "last_poll_at": "2026-09-23T08:51:16.448748+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -809,6 +810,44 @@
         "title": "Codex rust-v0.156.1 — Choose GPT-6 Sol or GPT-6 Luna from the model picker.",
         "up": 0,
         "url": "https://github.com/openai/codex/releases/tag/rust-v0.156.1",
+        "window_hours": 48.0
+      },
+      "-1004468125637:143": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 143,
+        "published_at": "2026-09-23T00:00:00+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-23T08:52:07+00:00",
+        "source_id": "meshy",
+        "title": "How a Seoul Teacher Uses AI 3D Modeling to Speed Up Student Prototyping",
+        "up": 0,
+        "url": "https://www.meshy.ai/blog/ai-3d-modeling-student-prototyping",
+        "window_hours": 48.0
+      },
+      "-1004468125637:144": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 144,
+        "published_at": "2026-09-23T00:37:52+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-23T08:52:09+00:00",
+        "source_id": "geeknews",
+        "title": "Drop - gVisor를 지원하는 루트 권한 없는 Linux 샌드박스",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34151",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -2184,7 +2223,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-23T05:12:13.935377+00:00",
+  "last_success_at": "2026-09-23T08:52:10.663885+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -2300,11 +2339,13 @@
     "https://news.hada.io/topic?id=34135": "2026-09-23T00:32:38.668166+00:00",
     "https://news.hada.io/topic?id=34138": "2026-09-23T05:12:07.635811+00:00",
     "https://news.hada.io/topic?id=34142": "2026-09-23T00:32:36.920365+00:00",
+    "https://news.hada.io/topic?id=34151": "2026-09-23T08:52:10.663885+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
     "https://www.aiandgames.com/p/post-gamescom-dev-musings-020926": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/the-steam-fest-that-proves-why-everyone": "2026-09-17T00:31:29.545714+00:00",
+    "https://www.meshy.ai/blog/ai-3d-modeling-student-prototyping": "2026-09-23T08:52:08.969776+00:00",
     "https://www.meshy.ai/blog/ai-agent-game-asset-pipeline": "2026-09-10T00:14:51.959512+00:00",
     "https://www.meshy.ai/blog/meshy-7-1-launch": "2026-09-10T08:27:00.161028+00:00",
     "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling": "2026-09-08T09:53:30.532071+00:00"
