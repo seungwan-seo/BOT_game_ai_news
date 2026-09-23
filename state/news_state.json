@@ -1,17 +1,17 @@
 {
-  "delivery_count": 12,
+  "delivery_count": 14,
   "delivery_day_kst": "2026-09-23",
   "delivery_source_counts": {
     "claude_code": 1,
     "codex": 2,
     "comfy": 1,
     "convai": 3,
-    "geeknews": 4,
-    "meshy": 1
+    "geeknews": 5,
+    "meshy": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-23T08:51:16.448748+00:00",
+    "last_poll_at": "2026-09-23T10:09:17.779565+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -848,6 +848,44 @@
         "title": "Drop - gVisor를 지원하는 루트 권한 없는 Linux 샌드박스",
         "up": 0,
         "url": "https://news.hada.io/topic?id=34151",
+        "window_hours": 48.0
+      },
+      "-1004468125637:145": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 145,
+        "published_at": "2026-09-21T00:00:00+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-23T10:10:03+00:00",
+        "source_id": "meshy",
+        "title": "Meshy 7 Texturing: True to Color, Clear in Detail",
+        "up": 0,
+        "url": "https://www.meshy.ai/blog/texture-alignment-benchmark",
+        "window_hours": 48.0
+      },
+      "-1004468125637:146": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 146,
+        "published_at": "2026-09-22T09:35:29+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-23T10:10:04+00:00",
+        "source_id": "geeknews",
+        "title": "내 하드웨어에서 실행하는 최첨단 AI",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34116",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -2223,7 +2261,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-23T08:52:10.663885+00:00",
+  "last_success_at": "2026-09-23T10:10:06.216830+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -2336,6 +2374,7 @@
     "https://news.hada.io/topic?id=34089": "2026-09-22T00:50:06.464267+00:00",
     "https://news.hada.io/topic?id=34093": "2026-09-22T06:13:17.463425+00:00",
     "https://news.hada.io/topic?id=34105": "2026-09-22T06:13:15.738438+00:00",
+    "https://news.hada.io/topic?id=34116": "2026-09-23T10:10:06.216830+00:00",
     "https://news.hada.io/topic?id=34135": "2026-09-23T00:32:38.668166+00:00",
     "https://news.hada.io/topic?id=34138": "2026-09-23T05:12:07.635811+00:00",
     "https://news.hada.io/topic?id=34142": "2026-09-23T00:32:36.920365+00:00",
@@ -2348,7 +2387,8 @@
     "https://www.meshy.ai/blog/ai-3d-modeling-student-prototyping": "2026-09-23T08:52:08.969776+00:00",
     "https://www.meshy.ai/blog/ai-agent-game-asset-pipeline": "2026-09-10T00:14:51.959512+00:00",
     "https://www.meshy.ai/blog/meshy-7-1-launch": "2026-09-10T08:27:00.161028+00:00",
-    "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling": "2026-09-08T09:53:30.532071+00:00"
+    "https://www.meshy.ai/blog/moesgaard-museum-3d-artifact-modeling": "2026-09-08T09:53:30.532071+00:00",
+    "https://www.meshy.ai/blog/texture-alignment-benchmark": "2026-09-23T10:10:04.568793+00:00"
   },
   "version": 1
 }
