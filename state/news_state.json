@@ -1,13 +1,13 @@
 {
-  "delivery_count": 2,
+  "delivery_count": 3,
   "delivery_day_kst": "2026-09-26",
   "delivery_source_counts": {
     "claude_code": 1,
-    "geeknews": 1
+    "geeknews": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-26T00:37:01.901984+00:00",
+    "last_poll_at": "2026-09-26T05:29:32.666378+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -1262,6 +1262,25 @@
         "title": "Ordewell - 코딩 작업을 위한 멀티 에이전트 오케스트레이터",
         "up": 0,
         "url": "https://news.hada.io/topic?id=34290",
+        "window_hours": 48.0
+      },
+      "-1004468125637:167": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 167,
+        "published_at": "2026-09-26T03:34:30+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-26T05:30:21+00:00",
+        "source_id": "geeknews",
+        "title": "계획 모드는 죽었다",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34304",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -2637,7 +2656,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-26T00:37:59.950319+00:00",
+  "last_success_at": "2026-09-26T05:30:22.971698+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -2774,6 +2793,7 @@
     "https://news.hada.io/topic?id=34248": "2026-09-25T05:25:30.605305+00:00",
     "https://news.hada.io/topic?id=34253": "2026-09-25T05:25:27.368546+00:00",
     "https://news.hada.io/topic?id=34290": "2026-09-26T00:37:59.950319+00:00",
+    "https://news.hada.io/topic?id=34304": "2026-09-26T05:30:22.971698+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
