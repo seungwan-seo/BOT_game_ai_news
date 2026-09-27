@@ -1,12 +1,12 @@
 {
-  "delivery_count": 2,
+  "delivery_count": 4,
   "delivery_day_kst": "2026-09-27",
   "delivery_source_counts": {
-    "geeknews": 2
+    "geeknews": 4
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-27T00:35:28.142251+00:00",
+    "last_poll_at": "2026-09-27T05:46:53.060028+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -1337,6 +1337,44 @@
         "title": "LLM 시대에도 프로그래밍을 계속 즐기는 법",
         "up": 0,
         "url": "https://news.hada.io/topic?id=34336",
+        "window_hours": 48.0
+      },
+      "-1004468125637:171": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 171,
+        "published_at": "2026-09-26T15:36:43+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-27T05:47:44+00:00",
+        "source_id": "geeknews",
+        "title": "AI 없이 보낸 한 달",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34323",
+        "window_hours": 48.0
+      },
+      "-1004468125637:172": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 172,
+        "published_at": "2026-09-26T10:04:05+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-27T05:47:46+00:00",
+        "source_id": "geeknews",
+        "title": "상품화된 지능",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34312",
         "window_hours": 48.0
       },
       "-1004468125637:26": {
@@ -2712,7 +2750,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-27T00:36:22.227941+00:00",
+  "last_success_at": "2026-09-27T05:47:47.383938+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -2851,6 +2889,8 @@
     "https://news.hada.io/topic?id=34290": "2026-09-26T00:37:59.950319+00:00",
     "https://news.hada.io/topic?id=34304": "2026-09-26T05:30:22.971698+00:00",
     "https://news.hada.io/topic?id=34310": "2026-09-26T08:51:44.373542+00:00",
+    "https://news.hada.io/topic?id=34312": "2026-09-27T05:47:47.383938+00:00",
+    "https://news.hada.io/topic?id=34323": "2026-09-27T05:47:45.704470+00:00",
     "https://news.hada.io/topic?id=34336": "2026-09-27T00:36:22.227941+00:00",
     "https://news.hada.io/topic?id=34344": "2026-09-27T00:36:20.573469+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
