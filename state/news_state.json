@@ -1,14 +1,14 @@
 {
-  "delivery_count": 7,
+  "delivery_count": 8,
   "delivery_day_kst": "2026-09-28",
   "delivery_source_counts": {
     "codex": 1,
-    "geeknews": 5,
+    "geeknews": 6,
     "invokeai": 1
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-28T10:11:47.329970+00:00",
+    "last_poll_at": "2026-09-28T11:49:41.040181+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -1512,6 +1512,25 @@
         "url": "https://news.hada.io/topic?id=34399",
         "window_hours": 48.0
       },
+      "-1004468125637:180": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 180,
+        "published_at": "2026-09-28T10:46:18+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-28T11:50:30+00:00",
+        "source_id": "geeknews",
+        "title": "변형 가능한 소프트웨어: 폐쇄적인 앱의 세계에서 사용자 주도권 되찾기 (2025)",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34423",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -2885,7 +2904,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-28T10:12:41.225556+00:00",
+  "last_success_at": "2026-09-28T11:50:31.875246+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3035,6 +3054,7 @@
     "https://news.hada.io/topic?id=34399": "2026-09-28T10:12:41.225556+00:00",
     "https://news.hada.io/topic?id=34417": "2026-09-28T06:52:56.043094+00:00",
     "https://news.hada.io/topic?id=34419": "2026-09-28T06:52:54.351408+00:00",
+    "https://news.hada.io/topic?id=34423": "2026-09-28T11:50:31.875246+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
