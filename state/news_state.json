@@ -1,14 +1,14 @@
 {
-  "delivery_count": 6,
+  "delivery_count": 8,
   "delivery_day_kst": "2026-09-29",
   "delivery_source_counts": {
     "claude_code": 1,
     "codex": 1,
-    "geeknews": 4
+    "geeknews": 6
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-29T08:28:17.427938+00:00",
+    "last_poll_at": "2026-09-29T10:09:42.990633+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -1645,6 +1645,44 @@
         "url": "https://news.hada.io/topic?id=34444",
         "window_hours": 48.0
       },
+      "-1004468125637:187": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 187,
+        "published_at": "2026-09-28T13:59:58+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-29T10:10:34+00:00",
+        "source_id": "geeknews",
+        "title": "Show GN: OVERFIT - 딥러닝 기반 2D 횡스크롤 소울라이크",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34433",
+        "window_hours": 48.0
+      },
+      "-1004468125637:188": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 188,
+        "published_at": "2026-09-28T15:42:55+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-29T10:10:36+00:00",
+        "source_id": "geeknews",
+        "title": "코딩은 해결된 문제가 아니다",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34435",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -3018,7 +3056,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-29T08:29:14.520801+00:00",
+  "last_success_at": "2026-09-29T10:10:37.886686+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3171,6 +3209,8 @@
     "https://news.hada.io/topic?id=34417": "2026-09-28T06:52:56.043094+00:00",
     "https://news.hada.io/topic?id=34419": "2026-09-28T06:52:54.351408+00:00",
     "https://news.hada.io/topic?id=34423": "2026-09-28T11:50:31.875246+00:00",
+    "https://news.hada.io/topic?id=34433": "2026-09-29T10:10:36.253949+00:00",
+    "https://news.hada.io/topic?id=34435": "2026-09-29T10:10:37.886686+00:00",
     "https://news.hada.io/topic?id=34444": "2026-09-29T08:29:14.520801+00:00",
     "https://news.hada.io/topic?id=34455": "2026-09-29T01:56:54.102927+00:00",
     "https://news.hada.io/topic?id=34463": "2026-09-29T01:56:55.760000+00:00",
