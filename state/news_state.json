@@ -1,13 +1,14 @@
 {
-  "delivery_count": 3,
+  "delivery_count": 6,
   "delivery_day_kst": "2026-09-29",
   "delivery_source_counts": {
     "claude_code": 1,
-    "geeknews": 2
+    "codex": 1,
+    "geeknews": 4
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-29T01:55:55.556529+00:00",
+    "last_poll_at": "2026-09-29T08:28:17.427938+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -1587,6 +1588,63 @@
         "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.284",
         "window_hours": 48.0
       },
+      "-1004468125637:184": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 184,
+        "published_at": "2026-09-29T02:33:22+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-29T08:29:09+00:00",
+        "source_id": "geeknews",
+        "title": "MicroLLM Lab - 브라우저에서 초소형 LLM 7개 체험하기",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34468",
+        "window_hours": 48.0
+      },
+      "-1004468125637:185": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 185,
+        "published_at": "2026-09-29T08:05:42+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-29T08:29:11+00:00",
+        "source_id": "codex",
+        "title": "Codex rust-v0.159.0 — Opt-in instant_interrupt lets new input steer Codex during model responses or long-running code-mode calls.",
+        "up": 0,
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.159.0",
+        "window_hours": 48.0
+      },
+      "-1004468125637:186": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 186,
+        "published_at": "2026-09-28T18:45:21+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-29T08:29:13+00:00",
+        "source_id": "geeknews",
+        "title": "Claude Sonnet 5.5 출시",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34444",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -2960,7 +3018,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-29T01:56:57.459191+00:00",
+  "last_success_at": "2026-09-29T08:29:14.520801+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3015,6 +3073,7 @@
     "https://github.com/openai/codex/releases/tag/rust-v0.156.1": "2026-09-23T05:12:13.935377+00:00",
     "https://github.com/openai/codex/releases/tag/rust-v0.157.0": "2026-09-25T05:25:28.974502+00:00",
     "https://github.com/openai/codex/releases/tag/rust-v0.158.0": "2026-09-28T10:12:39.611668+00:00",
+    "https://github.com/openai/codex/releases/tag/rust-v0.159.0": "2026-09-29T08:29:12.866205+00:00",
     "https://news.hada.io/topic?id=33245": "2026-09-06T01:05:41.038002+00:00",
     "https://news.hada.io/topic?id=33247": "2026-09-05T17:11:50.699580+00:00",
     "https://news.hada.io/topic?id=33273": "2026-09-06T15:50:48.989157+00:00",
@@ -3112,8 +3171,10 @@
     "https://news.hada.io/topic?id=34417": "2026-09-28T06:52:56.043094+00:00",
     "https://news.hada.io/topic?id=34419": "2026-09-28T06:52:54.351408+00:00",
     "https://news.hada.io/topic?id=34423": "2026-09-28T11:50:31.875246+00:00",
+    "https://news.hada.io/topic?id=34444": "2026-09-29T08:29:14.520801+00:00",
     "https://news.hada.io/topic?id=34455": "2026-09-29T01:56:54.102927+00:00",
     "https://news.hada.io/topic?id=34463": "2026-09-29T01:56:55.760000+00:00",
+    "https://news.hada.io/topic?id=34468": "2026-09-29T08:29:11.217754+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
     "https://www.aiandgames.com/p/exploring-the-ai-of-command-conquer": "2026-09-15T00:38:35.623048+00:00",
