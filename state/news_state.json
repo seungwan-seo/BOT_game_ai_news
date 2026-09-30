@@ -1,15 +1,15 @@
 {
-  "delivery_count": 8,
+  "delivery_count": 10,
   "delivery_day_kst": "2026-09-30",
   "delivery_source_counts": {
     "arxiv_game_ai": 2,
     "claude_code": 1,
     "codex": 1,
-    "geeknews": 4
+    "geeknews": 6
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-09-30T07:28:15.975197+00:00",
+    "last_poll_at": "2026-09-30T10:01:22.938043+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -1836,6 +1836,44 @@
         "url": "https://arxiv.org/abs/2609.37907v1",
         "window_hours": 48.0
       },
+      "-1004468125637:197": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 197,
+        "published_at": "2026-09-29T17:37:48+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-30T10:02:08+00:00",
+        "source_id": "geeknews",
+        "title": "OpenAI, GPT-6.1 Sol 공개",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34500",
+        "window_hours": 48.0
+      },
+      "-1004468125637:198": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 198,
+        "published_at": "2026-09-29T17:05:19+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-09-30T10:02:09+00:00",
+        "source_id": "geeknews",
+        "title": "Show GN: Blyck Video Understanding - Claude·Codex가 영상을 시각 근거와 함께 분석·검색하게 해주는 MCP",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34498",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -3209,7 +3247,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-09-30T07:29:13.820586+00:00",
+  "last_success_at": "2026-09-30T10:02:11.135517+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3373,6 +3411,8 @@
     "https://news.hada.io/topic?id=34455": "2026-09-29T01:56:54.102927+00:00",
     "https://news.hada.io/topic?id=34463": "2026-09-29T01:56:55.760000+00:00",
     "https://news.hada.io/topic?id=34468": "2026-09-29T08:29:11.217754+00:00",
+    "https://news.hada.io/topic?id=34498": "2026-09-30T10:02:11.135517+00:00",
+    "https://news.hada.io/topic?id=34500": "2026-09-30T10:02:09.512885+00:00",
     "https://news.hada.io/topic?id=34505": "2026-09-30T01:18:20.499614+00:00",
     "https://news.hada.io/topic?id=34510": "2026-09-30T01:18:17.248470+00:00",
     "https://news.hada.io/topic?id=34519": "2026-09-30T07:29:10.232603+00:00",
