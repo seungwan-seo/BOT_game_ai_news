@@ -1,16 +1,16 @@
 {
-  "delivery_count": 10,
+  "delivery_count": 12,
   "delivery_day_kst": "2026-10-01",
   "delivery_source_counts": {
     "ai_and_games": 2,
-    "arxiv_game_ai": 2,
+    "arxiv_game_ai": 3,
     "claude_code": 1,
     "comfy": 1,
-    "geeknews": 4
+    "geeknews": 5
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-10-01T07:48:26.014887+00:00",
+    "last_poll_at": "2026-10-01T10:29:22.460876+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -2103,6 +2103,44 @@
         "url": "https://news.hada.io/topic?id=34580",
         "window_hours": 48.0
       },
+      "-1004468125637:211": {
+        "category": "🤖 NPC·에이전트",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 211,
+        "published_at": "2026-09-29T09:26:07+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-01T10:30:07+00:00",
+        "source_id": "arxiv_game_ai",
+        "title": "Waypoint-1.5: A Real-Time Video World Model for Consumer Hardware",
+        "up": 0,
+        "url": "https://arxiv.org/abs/2609.37107v2",
+        "window_hours": 48.0
+      },
+      "-1004468125637:212": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 212,
+        "published_at": "2026-10-01T08:27:54+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-01T10:30:09+00:00",
+        "source_id": "geeknews",
+        "title": "Show GN: query-inspector - 소스 코드 내 SQL/ORM 쿼리를 추출해 튜닝 리포트를 작성하는 Claude Code 스킬",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34595",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -3476,7 +3514,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-10-01T07:49:36.551656+00:00",
+  "last_success_at": "2026-10-01T10:30:11.103535+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3490,6 +3528,7 @@
     "https://arxiv.org/abs/2609.31810v2": "2026-09-30T11:15:28.546107+00:00",
     "https://arxiv.org/abs/2609.32093v1": "2026-10-01T01:18:48.933574+00:00",
     "https://arxiv.org/abs/2609.37107v1": "2026-09-30T07:29:08.411383+00:00",
+    "https://arxiv.org/abs/2609.37107v2": "2026-10-01T10:30:09.298774+00:00",
     "https://arxiv.org/abs/2609.37907v1": "2026-09-30T07:29:13.820586+00:00",
     "https://arxiv.org/abs/2609.37907v2": "2026-10-01T01:18:47.215711+00:00",
     "https://blog.comfy.org/p/comfy-api-is-live-deploy-comfyui": "2026-10-01T01:18:37.561211+00:00",
@@ -3656,6 +3695,7 @@
     "https://news.hada.io/topic?id=34575": "2026-10-01T01:18:45.484561+00:00",
     "https://news.hada.io/topic?id=34580": "2026-10-01T07:49:36.551656+00:00",
     "https://news.hada.io/topic?id=34591": "2026-10-01T07:49:34.786649+00:00",
+    "https://news.hada.io/topic?id=34595": "2026-10-01T10:30:11.103535+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/006-figuring-out-ai-for-games-together": "2026-10-01T01:18:51.229513+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
