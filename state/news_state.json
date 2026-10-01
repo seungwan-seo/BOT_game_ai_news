@@ -1,16 +1,16 @@
 {
-  "delivery_count": 12,
+  "delivery_count": 14,
   "delivery_day_kst": "2026-10-01",
   "delivery_source_counts": {
     "ai_and_games": 2,
     "arxiv_game_ai": 3,
     "claude_code": 1,
     "comfy": 1,
-    "geeknews": 5
+    "geeknews": 7
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-10-01T10:29:22.460876+00:00",
+    "last_poll_at": "2026-10-01T11:42:15.667477+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -2141,6 +2141,44 @@
         "url": "https://news.hada.io/topic?id=34595",
         "window_hours": 48.0
       },
+      "-1004468125637:213": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 213,
+        "published_at": "2026-10-01T01:35:03+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-01T11:43:11+00:00",
+        "source_id": "geeknews",
+        "title": "TLA+가 검증할 수 있는 것과 없는 것",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34579",
+        "window_hours": 48.0
+      },
+      "-1004468125637:214": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 214,
+        "published_at": "2026-09-30T20:37:44+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-01T11:43:13+00:00",
+        "source_id": "geeknews",
+        "title": "Google, Gemini 4 Argon 발표",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34563",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -3514,7 +3552,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-10-01T10:30:11.103535+00:00",
+  "last_success_at": "2026-10-01T11:43:14.806451+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3692,7 +3730,9 @@
     "https://news.hada.io/topic?id=34519": "2026-09-30T07:29:10.232603+00:00",
     "https://news.hada.io/topic?id=34527": "2026-09-30T07:29:12.026571+00:00",
     "https://news.hada.io/topic?id=34551": "2026-10-01T01:18:41.047837+00:00",
+    "https://news.hada.io/topic?id=34563": "2026-10-01T11:43:14.806451+00:00",
     "https://news.hada.io/topic?id=34575": "2026-10-01T01:18:45.484561+00:00",
+    "https://news.hada.io/topic?id=34579": "2026-10-01T11:43:13.091915+00:00",
     "https://news.hada.io/topic?id=34580": "2026-10-01T07:49:36.551656+00:00",
     "https://news.hada.io/topic?id=34591": "2026-10-01T07:49:34.786649+00:00",
     "https://news.hada.io/topic?id=34595": "2026-10-01T10:30:11.103535+00:00",
