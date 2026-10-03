@@ -1,13 +1,13 @@
 {
-  "delivery_count": 3,
+  "delivery_count": 5,
   "delivery_day_kst": "2026-10-03",
   "delivery_source_counts": {
     "claude_code": 1,
-    "geeknews": 2
+    "geeknews": 4
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-10-03T01:11:16.374465+00:00",
+    "last_poll_at": "2026-10-03T06:34:54.540531+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -2404,6 +2404,44 @@
         "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.288",
         "window_hours": 48.0
       },
+      "-1004468125637:227": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 227,
+        "published_at": "2026-10-03T02:33:57+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-03T06:35:42+00:00",
+        "source_id": "geeknews",
+        "title": "Redis 개발자가 만든 ds4, LLM을 로컬에서 실행",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34698",
+        "window_hours": 48.0
+      },
+      "-1004468125637:228": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 228,
+        "published_at": "2026-10-02T06:36:18+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-03T06:35:44+00:00",
+        "source_id": "geeknews",
+        "title": "DeepSeek Harness, 맥·윈도우용 데스크톱 앱 공개",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34656",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -3777,7 +3815,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-10-03T01:12:10.549342+00:00",
+  "last_success_at": "2026-10-03T06:35:45.390213+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3970,8 +4008,10 @@
     "https://news.hada.io/topic?id=34621": "2026-10-02T07:33:40.934391+00:00",
     "https://news.hada.io/topic?id=34632": "2026-10-02T07:33:37.555403+00:00",
     "https://news.hada.io/topic?id=34641": "2026-10-02T01:42:18.985390+00:00",
+    "https://news.hada.io/topic?id=34656": "2026-10-03T06:35:45.390213+00:00",
     "https://news.hada.io/topic?id=34679": "2026-10-03T01:12:07.075581+00:00",
     "https://news.hada.io/topic?id=34681": "2026-10-03T01:12:08.794617+00:00",
+    "https://news.hada.io/topic?id=34698": "2026-10-03T06:35:43.669900+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/006-figuring-out-ai-for-games-together": "2026-10-01T01:18:51.229513+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
