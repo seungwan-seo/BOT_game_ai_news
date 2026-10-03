@@ -1,16 +1,13 @@
 {
-  "delivery_count": 9,
-  "delivery_day_kst": "2026-10-02",
+  "delivery_count": 3,
+  "delivery_day_kst": "2026-10-03",
   "delivery_source_counts": {
     "claude_code": 1,
-    "codex": 1,
-    "comfy": 2,
-    "geeknews": 4,
-    "videogames_industry_memo": 1
+    "geeknews": 2
   },
   "feedback": {
     "last_batch_size": 0,
-    "last_poll_at": "2026-10-02T18:04:55.374925+00:00",
+    "last_poll_at": "2026-10-03T01:11:16.374465+00:00",
     "next_update_id": 637924634,
     "posts": {
       "-1004468125637:100": {
@@ -2350,6 +2347,63 @@
         "url": "https://www.videogamesindustrymemo.com/p/russias-video-game-strategy-revealed",
         "window_hours": 48.0
       },
+      "-1004468125637:224": {
+        "category": "🌍 월드·콘텐츠 생성",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 224,
+        "published_at": "2026-10-02T19:45:57+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-03T01:12:05+00:00",
+        "source_id": "geeknews",
+        "title": "Opus 5.5에게 가상 캔버스를 주고 그림을 그리게 해봤다",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34679",
+        "window_hours": 48.0
+      },
+      "-1004468125637:225": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 225,
+        "published_at": "2026-10-02T20:41:15+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-03T01:12:07+00:00",
+        "source_id": "geeknews",
+        "title": "ChatGPT Sites - 대화로 웹사이트와 앱을 만들고 게시하기",
+        "up": 0,
+        "url": "https://news.hada.io/topic?id=34681",
+        "window_hours": 48.0
+      },
+      "-1004468125637:226": {
+        "category": "🛠 개발 도구",
+        "chat_id": -1004468125637,
+        "down": 0,
+        "learning_date": 0,
+        "learning_down": 0,
+        "learning_up": 0,
+        "learning_update_id": -1,
+        "message_id": 226,
+        "published_at": "2026-10-02T20:19:57+00:00",
+        "reaction_date": 0,
+        "reaction_update_id": -1,
+        "sent_at": "2026-10-03T01:12:09+00:00",
+        "source_id": "claude_code",
+        "title": "Claude Code v2.1.288 — Added $.ui.selection() for mods: returns the text you last selected in fullscreen mode and, when the selection lies within one transcript row, that…",
+        "up": 0,
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.288",
+        "window_hours": 48.0
+      },
       "-1004468125637:26": {
         "category": "🛠 개발 도구",
         "chat_id": -1004468125637,
@@ -3723,7 +3777,7 @@
     "window_hours": 48
   },
   "last_promo_at": "2026-09-20T08:50:19.475336+00:00",
-  "last_success_at": "2026-10-02T07:33:43.096140+00:00",
+  "last_success_at": "2026-10-03T01:12:10.549342+00:00",
   "promotion_cursor": 0,
   "seen": {
     "https://80.lv/articles/echoforge-uses-spatial-sound-to-build-3d-worlds-in-unity": "2026-09-12T00:18:46.915171+00:00",
@@ -3776,6 +3830,7 @@
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.285": "2026-09-30T01:18:18.866607+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.286": "2026-10-01T01:18:39.288151+00:00",
     "https://github.com/anthropics/claude-code/releases/tag/v2.1.287": "2026-10-02T07:33:35.881587+00:00",
+    "https://github.com/anthropics/claude-code/releases/tag/v2.1.288": "2026-10-03T01:12:10.549342+00:00",
     "https://github.com/invoke-ai/InvokeAI/releases/tag/v6.14.1": "2026-09-08T02:14:12.830758+00:00",
     "https://github.com/invoke-ai/InvokeAI/releases/tag/v6.14.2": "2026-09-28T00:45:18.845926+00:00",
     "https://github.com/openai/codex/releases/tag/python-v0.154.0": "2026-09-11T00:10:32.440184+00:00",
@@ -3915,6 +3970,8 @@
     "https://news.hada.io/topic?id=34621": "2026-10-02T07:33:40.934391+00:00",
     "https://news.hada.io/topic?id=34632": "2026-10-02T07:33:37.555403+00:00",
     "https://news.hada.io/topic?id=34641": "2026-10-02T01:42:18.985390+00:00",
+    "https://news.hada.io/topic?id=34679": "2026-10-03T01:12:07.075581+00:00",
+    "https://news.hada.io/topic?id=34681": "2026-10-03T01:12:08.794617+00:00",
     "https://www.aiandgames.com/p/005-gamescom-gossip": "2026-09-04T16:46:03.545502+00:00",
     "https://www.aiandgames.com/p/006-figuring-out-ai-for-games-together": "2026-10-01T01:18:51.229513+00:00",
     "https://www.aiandgames.com/p/diving-into-the-sinking-city-2-090926": "2026-09-10T00:14:47.022848+00:00",
